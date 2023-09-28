@@ -8,6 +8,7 @@ import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AlertaComponent } from './shared/components/alerta/alerta.component';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { InicioComponent } from './pages/inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { HeaderComponent } from './shared/components/header/header.component';
     LoginComponent,
     CadastroComponent,
     AlertaComponent,
-    HeaderComponent
+    HeaderComponent,
+    InicioComponent
   ],
   imports: [
     BrowserModule,
