@@ -4,3 +4,7 @@
   align-items: center;
   margin-top: 15px;
 }
+
+.mensagem {
+  white-space: nowrap;
+}
