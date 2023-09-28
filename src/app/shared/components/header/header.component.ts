@@ -17,12 +17,11 @@ export class HeaderComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.currentPath = this.router.url;
-    this.currentPath = this.router.url.substring(1);
-    console.log(this.currentPath);
   }
 
   get isTelaSemBotaoSair() {
+    this.currentPath = this.router.url;
+    this.currentPath = this.router.url.substring(1);
     return this.currentPath != '' || this.currentPath.includes(this.URL_CADASTRO);
   }
 }
