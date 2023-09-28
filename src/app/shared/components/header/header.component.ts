@@ -8,11 +8,11 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  readonly URL_CADASTRO = 'cadastro'
+  readonly URL_LOGIN = '/login';
+  readonly URL_CADASTRO = '/cadastro';
 
   caminhoImagem: string = '../../../../assets/image/pokebola.png';
   titulo: string = 'Bagdex';
-  currentPath: string = '';
 
   constructor(private router: Router) { }
 
@@ -20,8 +20,7 @@ export class HeaderComponent implements OnInit {
   }
 
   get isTelaSemBotaoSair() {
-    this.currentPath = this.router.url;
-    this.currentPath = this.router.url.substring(1);
-    return this.currentPath != '' || this.currentPath.includes(this.URL_CADASTRO);
+    const currentRoute = this.router.url;
+    return currentRoute === this.URL_LOGIN || currentRoute === this.URL_CADASTRO;
   }
 }
