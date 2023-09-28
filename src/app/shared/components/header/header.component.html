@@ -1,0 +1,15 @@
+<nav class="navbar header fixed-top">
+    <div class="row container-fluid">
+      <div class="col">
+        <img [src]="caminhoImagem" [alt]="titulo" class="d-inline-block icone">
+      </div>
+      <div class="col text-center">
+        <span class="navbar-text titulo">
+          {{titulo}}
+        </span>
+      </div>
+      <div class="col text-end">
+        <span class="navbar-text titulo" *ngIf="isTelaSemBotaoSair">Sair</span>
+      </div>
+    </div>
+</nav>

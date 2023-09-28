@@ -1,7 +1,7 @@
 import { Component, OnInit, Input} from '@angular/core';
 
 @Component({
-  selector: 'alerta',
+  selector: 'alerta-error',
   templateUrl: './alerta.component.html',
   styleUrls: ['./alerta.component.css']
 })

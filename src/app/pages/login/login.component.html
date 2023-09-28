@@ -4,9 +4,9 @@
       <input type="text" class="form-control input" placeholder="E-mail" aria-label="E-mail" aria-describedby="basic-addon1" formControlName="email" name="email">
       <input type="text" class="form-control input" placeholder="Senha" aria-label="Senha" aria-describedby="basic-addon1" formControlName="senha" name="senha">
 
-      <alerta *ngIf="formPreenchido" mensagem="Os campos são obrigatórios!" ></alerta>
-      <alerta *ngIf="formLogin.controls['email'].errors?.['email']" mensagem="Campo e-mail inválido!"></alerta>
-      <alerta *ngIf="formLogin.controls['senha'].errors?.['minlength']" mensagem="Campo senha é maior que 4 dígitos!"></alerta>
+      <alerta-error *ngIf="formPreenchido" mensagem="Os campos são obrigatórios!" ></alerta-error>
+      <alerta-error *ngIf="formLogin.controls['email'].errors?.['email']" mensagem="Campo e-mail inválido!"></alerta-error>
+      <alerta-error *ngIf="formLogin.controls['senha'].errors?.['minlength']" mensagem="Campo senha é maior que 4 dígitos!"></alerta-error>
 
       <div class="botoes">
         <button type="submit" class="btn btn-danger" [disabled]="formLogin.invalid">Login</button>
