@@ -23,4 +23,9 @@ export class HeaderComponent implements OnInit {
     const currentRoute = this.router.url;
     return currentRoute === this.URL_LOGIN || currentRoute === this.URL_CADASTRO;
   }
+
+  sair() {
+    sessionStorage.removeItem('token');
+    this.router.navigateByUrl('/');
+  }
 }

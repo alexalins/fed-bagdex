@@ -9,7 +9,7 @@
         </span>
       </div>
       <div class="col text-end">
-        <span class="navbar-text titulo" *ngIf="!isTelaSemBotaoSair">Sair</span>
+        <span class="navbar-text titulo" *ngIf="!isTelaSemBotaoSair" (click)="sair()">Sair</span>
       </div>
     </div>
 </nav>
