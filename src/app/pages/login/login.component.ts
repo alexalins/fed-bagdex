@@ -36,8 +36,12 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/inicio');
       },
       (error) => {
-        console.log(error)
-        this.toastr.error('Erro ao realizar o login!');
+        console.log(error);
+        if(error.status === 401) {
+          this.toastr.error('Campo e-mail/senha inválido!');
+        } else {
+          this.toastr.error('Erro ao realizar o login!');
+        }
       }
     );
   }

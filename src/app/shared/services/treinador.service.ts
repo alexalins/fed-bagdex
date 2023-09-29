@@ -1,9 +1,9 @@
 import { ErrorHandler, Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { LoginRequest } from '../model/request/login';
 import { LoginResponse } from '../model/response/login';
-import { EMPTY, Observable, catchError } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +17,8 @@ export class TreinadorService {
   login(login: LoginRequest): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.apiUrl}/login`, login)
       .pipe(
-        catchError( e => {
-          throw new Error(e);
+        catchError((e) => {
+          return throwError(e);
         })
       );
   }
