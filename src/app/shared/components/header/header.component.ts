@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Constants } from '../../utils/constants';
 
 @Component({
   selector: 'header',
@@ -8,8 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  readonly URL_LOGIN = '/login';
-  readonly URL_CADASTRO = '/cadastro';
+
 
   caminhoImagem: string = '../../../../assets/image/pokebola.png';
   titulo: string = 'Bagdex';
@@ -21,7 +21,7 @@ export class HeaderComponent implements OnInit {
 
   get isTelaSemBotaoSair() {
     const currentRoute = this.router.url;
-    return currentRoute === this.URL_LOGIN || currentRoute === this.URL_CADASTRO;
+    return currentRoute === Constants.URL_LOGIN || currentRoute === Constants.URL_CADASTRO;
   }
 
   sair() {

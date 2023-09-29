@@ -5,6 +5,7 @@ import { LoginRequest } from 'src/app/shared/model/request/login';
 import { LoginResponse } from 'src/app/shared/model/response/login';
 import { TreinadorService } from 'src/app/shared/services/treinador.service';
 import { ToastrService } from 'ngx-toastr';
+import { Constants } from 'src/app/shared/utils/constants';
 
 @Component({
   selector: 'app-login',
@@ -26,10 +27,7 @@ export class LoginComponent implements OnInit {
   });
 
   login() {
-    let email = this.formLogin.get('email')?.value;
-    let senha = this.formLogin.get('senha')?.value;
-
-    let login: LoginRequest = new LoginRequest(email, senha);
+    let login = this.montarRequest();
     this.treinadorService.login(login).subscribe(
       (data: LoginResponse) => {
         sessionStorage.setItem('token', data.token);
@@ -37,13 +35,19 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        if(error.status === 401) {
+        if(error.status === Constants.UNAUTHORIZED) {
           this.toastr.error('Campo e-mail/senha inválido!');
         } else {
           this.toastr.error('Erro ao realizar o login!');
         }
       }
     );
+  }
+
+  montarRequest(): LoginRequest {
+    let email = this.formLogin.get('email')?.value;
+    let senha = this.formLogin.get('senha')?.value;
+    return new LoginRequest(email, senha);
   }
 
   get formPreenchido() {
