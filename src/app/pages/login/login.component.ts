@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
   get formPreenchido() {
     return (
       this.formLogin.controls['email'].errors?.['required'] &&
-      this.formLogin.controls['email'].touched &&
+      this.formLogin.controls['email'].touched ||
       this.formLogin.controls['senha'].errors?.['required'] &&
       this.formLogin.controls['senha'].touched
     );
