@@ -2,7 +2,7 @@
   <div class="card-body">
     <form  [formGroup]="formLogin" (ngSubmit)="login()">
       <input type="text" class="form-control input" placeholder="E-mail" aria-label="E-mail" aria-describedby="basic-addon1" formControlName="email" name="email">
-      <input type="text" class="form-control input" placeholder="Senha" aria-label="Senha" aria-describedby="basic-addon1" formControlName="senha" name="senha">
+      <input type="text" class="form-control input" placeholder="Senha" aria-label="Senha" aria-describedby="basic-addon1" formControlName="senha" name="senha" type="password">
 
       <alerta-error *ngIf="formPreenchido" mensagem="Os campos são obrigatórios!" ></alerta-error>
       <alerta-error *ngIf="formLogin.controls['email'].errors?.['email']" mensagem="Campo e-mail inválido!"></alerta-error>

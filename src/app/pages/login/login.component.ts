@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginRequest } from 'src/app/shared/model/request/login';
+import { LoginResponse } from 'src/app/shared/model/response/login';
+import { TreinadorService } from 'src/app/shared/services/treinador.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private treinadorService: TreinadorService) { }
 
   ngOnInit(): void {
   }
@@ -20,8 +23,18 @@ export class LoginComponent implements OnInit {
   });
 
   login() {
-    this.router.navigate(['/inicio']);
-    console.log("login");
+    let email = this.formLogin.get('email')?.value;
+    let senha = this.formLogin.get('senha')?.value;
+
+    let login: LoginRequest = new LoginRequest(email, senha);
+    this.treinadorService.login(login).subscribe(
+      (data: LoginResponse) => {
+        sessionStorage.setItem('token', data.token);
+        this.router.navigateByUrl('/inicio');
+      },
+      (error) => {
+
+      })
   }
 
   get formPreenchido() {
