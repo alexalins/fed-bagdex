@@ -6,6 +6,7 @@ import { LoginResponse } from 'src/app/shared/model/response/login';
 import { TreinadorService } from 'src/app/shared/services/treinador.service';
 import { ToastrService } from 'ngx-toastr';
 import { Constants } from 'src/app/shared/utils/constants';
+import { ValidacoesUtil } from 'src/app/shared/utils/ValidacoesUtil';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,12 @@ import { Constants } from 'src/app/shared/utils/constants';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+
+  formLogin = new FormGroup({
+    email: new FormControl('', [Validators.email, Validators.required, ValidacoesUtil.noWhitespaceValidator]),
+    senha: new FormControl('', [Validators.minLength(4), Validators.required, ValidacoesUtil.noWhitespaceValidator]),
+  });
+
   constructor(
     private router: Router,
     private treinadorService: TreinadorService,
@@ -20,11 +27,6 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-
-  formLogin = new FormGroup({
-    email: new FormControl('', [Validators.email, Validators.required]),
-    senha: new FormControl('', [Validators.minLength(4), Validators.required]),
-  });
 
   login() {
     let login = this.montarRequest();
@@ -58,4 +60,12 @@ export class LoginComponent implements OnInit {
       this.formLogin.controls['senha'].touched
     );
   }
+
+  get formPreenchidoComEspaco() {
+    return (
+      this.formLogin.controls['email'].errors?.['whitespace'] ||
+      this.formLogin.controls['senha'].errors?.['whitespace']
+    );
+  }
+
 }
