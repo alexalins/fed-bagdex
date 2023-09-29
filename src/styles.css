@@ -1,5 +1,6 @@
-@import "~bootstrap/dist/css/bootstrap.css";
+@import '~bootstrap/dist/css/bootstrap.css';
 @import 'ngx-toastr/toastr.css';
+@import '~bootstrap-icons/font/bootstrap-icons.css';
 
 body {
   background-color: lightgray
