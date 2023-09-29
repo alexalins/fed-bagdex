@@ -10,6 +10,9 @@ import { AlertaComponent } from './shared/components/alerta/alerta.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CommonModule } from '@angular/common';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -24,7 +27,17 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CommonModule,
+    BrowserAnimationsModule,
+    ToastContainerModule,
+    ToastrModule.forRoot({
+      preventDuplicates: true,
+      disableTimeOut: false,
+      timeOut: 2500,
+      closeButton: true,
+      enableHtml: true
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
