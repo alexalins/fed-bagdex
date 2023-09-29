@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TreinadorRequest } from 'src/app/shared/model/request/treinador';
 import { TreinadorResponse } from 'src/app/shared/model/response/treinador';
 import { TreinadorService } from 'src/app/shared/services/treinador.service';
+import { ValidacoesUtil } from 'src/app/shared/utils/ValidacoesUtil';
 import { Constants } from 'src/app/shared/utils/constants';
 
 @Component({
@@ -22,9 +23,9 @@ export class CadastroComponent implements OnInit {
   ngOnInit(): void {}
 
   formCadastro = new FormGroup({
-    nome: new FormControl('', [Validators.minLength(4), Validators.required]),
-    email: new FormControl('', [Validators.email, Validators.required]),
-    senha: new FormControl('', [Validators.minLength(4), Validators.required]),
+    nome: new FormControl('', [Validators.minLength(4), Validators.required, ValidacoesUtil.noWhitespaceValidator]),
+    email: new FormControl('', [Validators.email, Validators.required, ValidacoesUtil.noWhitespaceValidator]),
+    senha: new FormControl('', [Validators.minLength(4), Validators.required, ValidacoesUtil.noWhitespaceValidator]),
   });
 
   cadastrar() {
@@ -59,6 +60,17 @@ export class CadastroComponent implements OnInit {
       (this.formCadastro.controls['email'].errors?.['required'] &&
         this.formCadastro.controls['email'].touched) ||
       (this.formCadastro.controls['senha'].errors?.['required'] &&
+        this.formCadastro.controls['senha'].touched)
+    );
+  }
+
+  get formPreenchidoComEspaco() {
+    return (
+      (this.formCadastro.controls['nome'].errors?.['whitespace'] &&
+        this.formCadastro.controls['nome'].touched) ||
+      (this.formCadastro.controls['email'].errors?.['whitespace'] &&
+        this.formCadastro.controls['email'].touched) ||
+      (this.formCadastro.controls['senha'].errors?.['whitespace'] &&
         this.formCadastro.controls['senha'].touched)
     );
   }

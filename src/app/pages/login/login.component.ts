@@ -14,10 +14,17 @@ import { ValidacoesUtil } from 'src/app/shared/utils/ValidacoesUtil';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
   formLogin = new FormGroup({
-    email: new FormControl('', [Validators.email, Validators.required, ValidacoesUtil.noWhitespaceValidator]),
-    senha: new FormControl('', [Validators.minLength(4), Validators.required, ValidacoesUtil.noWhitespaceValidator]),
+    email: new FormControl('', [
+      Validators.email,
+      Validators.required,
+      ValidacoesUtil.noWhitespaceValidator,
+    ]),
+    senha: new FormControl('', [
+      Validators.minLength(4),
+      Validators.required,
+      ValidacoesUtil.noWhitespaceValidator,
+    ]),
   });
 
   constructor(
@@ -37,7 +44,7 @@ export class LoginComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        if(error.status === Constants.UNAUTHORIZED) {
+        if (error.status === Constants.UNAUTHORIZED) {
           this.toastr.error('Campo e-mail/senha inválido!');
         } else {
           this.toastr.error('Erro ao realizar o login!');
@@ -63,9 +70,10 @@ export class LoginComponent implements OnInit {
 
   get formPreenchidoComEspaco() {
     return (
-      this.formLogin.controls['email'].errors?.['whitespace'] ||
-      this.formLogin.controls['senha'].errors?.['whitespace']
+      (this.formLogin.controls['email'].errors?.['whitespace'] &&
+        this.formLogin.controls['email'].touched) ||
+      (this.formLogin.controls['senha'].errors?.['whitespace'] &&
+        this.formLogin.controls['senha'].touched)
     );
   }
-
 }

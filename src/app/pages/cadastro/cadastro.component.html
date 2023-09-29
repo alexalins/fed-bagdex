@@ -6,6 +6,7 @@
       <input type="text" class="form-control input" placeholder="Senha *" aria-label="Senha" aria-describedby="basic-addon1" formControlName="senha" name="senha" type="password">
 
       <alerta-error *ngIf="formPreenchido" mensagem="Campos obrigatorios não preenchidos!" ></alerta-error>
+      <alerta-error *ngIf="formPreenchidoComEspaco" mensagem="Campos obrigatorios preenchidos com espaço!" ></alerta-error>
       <alerta-error *ngIf="formCadastro.controls['email'].errors?.['email']" mensagem="Campo e-mail inválido!"></alerta-error>
       <alerta-error *ngIf="formCadastro.controls['nome'].errors?.['minlength']" mensagem="Campo nome é maior que 4 dígitos!"></alerta-error>
       <alerta-error *ngIf="formCadastro.controls['senha'].errors?.['minlength']" mensagem="Campo senha é maior que 4 dígitos!"></alerta-error>
