@@ -7,9 +7,12 @@
 }
 
 .botoes {
-  margin-top: 20px;
   display: flex;
   flex-direction: column;
+}
+
+.botao {
+  margin-top: 20px;
 }
 
 .input {

@@ -9,8 +9,8 @@
       <alerta-error *ngIf="formLogin.controls['senha'].errors?.['minlength']" mensagem="Campo senha é maior que 4 dígitos!"></alerta-error>
 
       <div class="botoes">
-        <button type="submit" class="btn btn-danger" [disabled]="formLogin.invalid">Login</button>
-        <button type="button" class="btn btn-light" routerLink="/cadastro">Cadastro</button>
+        <button type="submit" class="btn btn-danger botao" [disabled]="formLogin.invalid">Login</button>
+        <button type="button" class="btn btn-light botao" routerLink="/cadastro">Crie sua conta</button>
       </div>
     </form>
   </div>
