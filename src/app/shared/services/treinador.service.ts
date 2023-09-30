@@ -14,7 +14,7 @@ export class TreinadorService {
 
   apiUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(public http: HttpClient) { }
 
   login(login: LoginRequest): Observable<LoginResponse> {
     return this.http.post<LoginResponse>(`${this.apiUrl}/login`, login)

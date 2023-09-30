@@ -25,7 +25,8 @@ export class HeaderComponent implements OnInit {
   }
 
   sair() {
-    sessionStorage.removeItem('token');
-    this.router.navigateByUrl('/');
+    sessionStorage.removeItem(Constants.KEY_TREINADOR)
+    sessionStorage.removeItem(Constants.KEY_TOKEN);
+    this.router.navigateByUrl(Constants.URL_LOGIN);
   }
 }

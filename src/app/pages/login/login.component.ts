@@ -39,12 +39,14 @@ export class LoginComponent implements OnInit {
     let login = this.montarRequest();
     this.treinadorService.login(login).subscribe(
       (data: LoginResponse) => {
-        sessionStorage.setItem('token', data.token);
-        this.router.navigateByUrl('/inicio');
+        console.log(data)
+        sessionStorage.setItem(Constants.KEY_TOKEN, data.token);
+        sessionStorage.setItem(Constants.KEY_TREINADOR, JSON.stringify(data));
+        this.router.navigateByUrl(Constants.URL_INICIO);
       },
       (error) => {
         console.log(error);
-        if (error.status === Constants.UNAUTHORIZED) {
+        if (error.status === Constants.CODE_UNAUTHORIZED) {
           this.toastr.error('Campo e-mail/senha inválido!');
         } else {
           this.toastr.error('Erro ao realizar o login!');

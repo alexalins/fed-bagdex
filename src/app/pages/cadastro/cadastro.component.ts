@@ -33,11 +33,11 @@ export class CadastroComponent implements OnInit {
     this.treinadorService.cadastrar(treinador).subscribe(
       (data: TreinadorResponse) => {
         this.toastr.success('Cadastro realizado com sucesso!');
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl(Constants.URL_LOGIN);
       },
       (error) => {
         console.log(error);
-        if (error.status === Constants.CONFLICT) {
+        if (error.status === Constants.CODE_CONFLICT) {
           this.toastr.error('E-mail já cadastrado!');
         } else {
           this.toastr.error('Erro ao realizar o login!');
