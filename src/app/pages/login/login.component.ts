@@ -56,26 +56,26 @@ export class LoginComponent implements OnInit {
   }
 
   montarRequest(): LoginRequest {
-    let email = this.formLogin.get('email')?.value;
-    let senha = this.formLogin.get('senha')?.value;
+    let email = this.formLogin.get(Constants.FORM_EMAIL)?.value;
+    let senha = this.formLogin.get(Constants.FORM_SENHA)?.value;
     return new LoginRequest(email, senha);
   }
 
   get formPreenchido() {
     return (
-      this.formLogin.controls['email'].errors?.['required'] &&
-      this.formLogin.controls['email'].touched ||
-      this.formLogin.controls['senha'].errors?.['required'] &&
-      this.formLogin.controls['senha'].touched
+      this.formLogin.controls[Constants.FORM_EMAIL].errors?.['required'] &&
+      this.formLogin.controls[Constants.FORM_EMAIL].touched ||
+      this.formLogin.controls[Constants.FORM_SENHA].errors?.['required'] &&
+      this.formLogin.controls[Constants.FORM_SENHA].touched
     );
   }
 
   get formPreenchidoComEspaco() {
     return (
-      (this.formLogin.controls['email'].errors?.['whitespace'] &&
-        this.formLogin.controls['email'].touched) ||
-      (this.formLogin.controls['senha'].errors?.['whitespace'] &&
-        this.formLogin.controls['senha'].touched)
+      (this.formLogin.controls[Constants.FORM_EMAIL].errors?.['whitespace'] &&
+        this.formLogin.controls[Constants.FORM_EMAIL].touched) ||
+      (this.formLogin.controls[Constants.FORM_SENHA].errors?.['whitespace'] &&
+        this.formLogin.controls[Constants.FORM_SENHA].touched)
     );
   }
 }

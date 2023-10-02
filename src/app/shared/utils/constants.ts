@@ -13,4 +13,8 @@ export class Constants {
   static readonly KEY_TREINADOR: string = 'treinador';
   static readonly KEY_TOKEN: string = 'token';
 
+  //Form
+  static readonly FORM_NOME: string = 'nome';
+  static readonly FORM_EMAIL: string = 'email';
+  static readonly FORM_SENHA: string = 'senha';
 }
