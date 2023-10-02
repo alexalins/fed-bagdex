@@ -9,8 +9,6 @@ import { Constants } from '../../utils/constants';
 })
 export class HeaderComponent implements OnInit {
 
-
-
   caminhoImagem: string = '../../../../assets/image/pokebola.png';
   titulo: string = 'Bagdex';
 
