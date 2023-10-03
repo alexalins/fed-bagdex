@@ -6,7 +6,7 @@ import { LoginResponse } from 'src/app/shared/model/response/login';
 import { TreinadorService } from 'src/app/shared/services/treinador.service';
 import { ToastrService } from 'ngx-toastr';
 import { Constants } from 'src/app/shared/utils/constants';
-import { ValidacoesUtil } from 'src/app/shared/utils/ValidacoesUtil';
+import { ValidacoesUtil } from 'src/app/shared/utils/validacoesUtil';
 
 @Component({
   selector: 'app-login',

@@ -5,7 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import { TreinadorRequest } from 'src/app/shared/model/request/treinador';
 import { TreinadorResponse } from 'src/app/shared/model/response/treinador';
 import { TreinadorService } from 'src/app/shared/services/treinador.service';
-import { ValidacoesUtil } from 'src/app/shared/utils/ValidacoesUtil';
+import { ValidacoesUtil } from 'src/app/shared/utils/validacoesUtil';
 import { Constants } from 'src/app/shared/utils/constants';
 
 @Component({
