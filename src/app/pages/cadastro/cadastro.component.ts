@@ -14,6 +14,13 @@ import { Constants } from 'src/app/shared/utils/constants';
   styleUrls: ['./cadastro.component.css'],
 })
 export class CadastroComponent implements OnInit {
+
+  formCadastro = new FormGroup({
+    nome: new FormControl('', [Validators.minLength(4), Validators.required, ValidacoesUtil.noWhitespaceValidator]),
+    email: new FormControl('', [Validators.email, Validators.required, ValidacoesUtil.noWhitespaceValidator]),
+    senha: new FormControl('', [Validators.minLength(4), Validators.required, ValidacoesUtil.noWhitespaceValidator]),
+  });
+
   constructor(
     private treinadorService: TreinadorService,
     private toastr: ToastrService,
@@ -21,12 +28,6 @@ export class CadastroComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {}
-
-  formCadastro = new FormGroup({
-    nome: new FormControl('', [Validators.minLength(4), Validators.required, ValidacoesUtil.noWhitespaceValidator]),
-    email: new FormControl('', [Validators.email, Validators.required, ValidacoesUtil.noWhitespaceValidator]),
-    senha: new FormControl('', [Validators.minLength(4), Validators.required, ValidacoesUtil.noWhitespaceValidator]),
-  });
 
   cadastrar() {
     let treinador = this.montarRequest();
@@ -47,31 +48,31 @@ export class CadastroComponent implements OnInit {
   }
 
   montarRequest(): TreinadorRequest {
-    let nome = this.formCadastro.get('nome')?.value;
-    let email = this.formCadastro.get('email')?.value;
-    let senha = this.formCadastro.get('senha')?.value;
+    let nome = this.formCadastro.get(Constants.FORM_NOME)?.value;
+    let email = this.formCadastro.get(Constants.FORM_EMAIL)?.value;
+    let senha = this.formCadastro.get(Constants.FORM_SENHA)?.value;
     return new TreinadorRequest(nome, email, senha);
   }
 
   get formPreenchido() {
     return (
-      (this.formCadastro.controls['nome'].errors?.['required'] &&
-        this.formCadastro.controls['nome'].touched) ||
-      (this.formCadastro.controls['email'].errors?.['required'] &&
-        this.formCadastro.controls['email'].touched) ||
-      (this.formCadastro.controls['senha'].errors?.['required'] &&
-        this.formCadastro.controls['senha'].touched)
+      (this.formCadastro.controls[Constants.FORM_NOME].errors?.['required'] &&
+        this.formCadastro.controls[Constants.FORM_NOME].touched) ||
+      (this.formCadastro.controls[Constants.FORM_EMAIL].errors?.['required'] &&
+        this.formCadastro.controls[Constants.FORM_EMAIL].touched) ||
+      (this.formCadastro.controls[Constants.FORM_SENHA].errors?.['required'] &&
+        this.formCadastro.controls[Constants.FORM_SENHA].touched)
     );
   }
 
   get formPreenchidoComEspaco() {
     return (
-      (this.formCadastro.controls['nome'].errors?.['whitespace'] &&
-        this.formCadastro.controls['nome'].touched) ||
-      (this.formCadastro.controls['email'].errors?.['whitespace'] &&
-        this.formCadastro.controls['email'].touched) ||
-      (this.formCadastro.controls['senha'].errors?.['whitespace'] &&
-        this.formCadastro.controls['senha'].touched)
+      (this.formCadastro.controls[Constants.FORM_NOME].errors?.['whitespace'] &&
+        this.formCadastro.controls[Constants.FORM_NOME].touched) ||
+      (this.formCadastro.controls[Constants.FORM_EMAIL].errors?.['whitespace'] &&
+        this.formCadastro.controls[Constants.FORM_EMAIL].touched) ||
+      (this.formCadastro.controls[Constants.FORM_SENHA].errors?.['whitespace'] &&
+        this.formCadastro.controls[Constants.FORM_SENHA].touched)
     );
   }
 }

@@ -9,7 +9,7 @@ import { LoginResponse } from 'src/app/shared/model/response/login';
 import { Constants } from 'src/app/shared/utils/constants';
 import { of, throwError } from 'rxjs';
 import { TreinadorService } from 'src/app/shared/services/treinador.service';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 describe('LoginComponent', () => {
@@ -23,7 +23,7 @@ describe('LoginComponent', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      imports: [FormsModule, ReactiveFormsModule, RouterTestingModule.withRoutes([]), HttpClientModule],
+      imports: [FormsModule, RouterTestingModule.withRoutes([]), HttpClientModule, ReactiveFormsModule],
       providers: [
         TreinadorService,
         ToastrService,
