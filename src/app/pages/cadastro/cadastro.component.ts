@@ -41,7 +41,7 @@ export class CadastroComponent implements OnInit {
         if (error.status === Constants.CODE_CONFLICT) {
           this.toastr.error('E-mail já cadastrado!');
         } else {
-          this.toastr.error('Erro ao realizar o login!');
+          this.toastr.error('Erro ao realizar o cadastro!');
         }
       }
     );
