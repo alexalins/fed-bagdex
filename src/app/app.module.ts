@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
+import { CardBagComponent } from './shared/components/card-bag/card-bag.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
     AlertaComponent,
     HeaderComponent,
     InicioComponent,
+    CardBagComponent,
   ],
   imports: [
     BrowserModule,
