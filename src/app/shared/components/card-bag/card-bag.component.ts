@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Bolsa } from '../../model/Bolsa';
+import { Bolsa } from '../../model/bolsa';
+import { DataUtil } from '../../utils/dataUtil';
 
 @Component({
   selector: 'card-bag',
@@ -13,6 +14,7 @@ export class CardBagComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.bolsa.data = DataUtil.formatarData(this.bolsa.data);
   }
 
 }

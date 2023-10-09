@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { Bolsa } from 'src/app/shared/model/Bolsa';
+import { Bolsa } from 'src/app/shared/model/bolsa';
+import { BolsaService } from 'src/app/shared/services/bolsa.service';
 import { Constants } from 'src/app/shared/utils/constants';
 
 @Component({
@@ -13,12 +14,23 @@ export class InicioComponent implements OnInit {
 
   bolsas: Bolsa[] = [];
 
-  constructor(private toastr: ToastrService, private router: Router) { }
+  constructor(private toastr: ToastrService, private router: Router, private bolsaService: BolsaService) { }
 
   ngOnInit(): void {
-    let bolsa = new Bolsa('Bolsa mock', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed condimentum aliquam lorem, dapibus finibus diam bibendum in. Duis non orci condimentum, consectetur dolor ac, tincidunt sem. Sed non congue ligula, et porttitor risus. Maecenas a justo ut sem molestie volutpat ac quis lectus. Vivamus quis congue quam',
-     "ESTOU_PROCURANDO", "09/10/2023", [])
-    this.bolsas.push(bolsa)
+    this.getBolsas();
+  }
+
+  getBolsas() {
+    this.bolsaService.getBolsaDoTreinador(this.treinador).toPromise().then(
+      (data: any) => {
+        console.log(data);
+        this.bolsas = data;
+      },
+      (error) => {
+        console.log(error);
+        this.toastr.error('Erro ao recupar as bags do usuário!');
+      }
+    )
   }
 
   get treinador() {
