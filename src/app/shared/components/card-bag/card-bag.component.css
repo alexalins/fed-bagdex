@@ -1,7 +1,7 @@
 .card {
   margin: 20px;
   border-radius: 14px;
-  min-height: 80px;
+  height: 140px;
   padding: 10px;
 }
 
@@ -14,6 +14,9 @@
 .descricao {
   font-size: 14px;
   color:black;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .data {
