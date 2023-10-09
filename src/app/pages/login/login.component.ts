@@ -39,10 +39,10 @@ export class LoginComponent implements OnInit {
     let login = this.montarRequest();
     this.treinadorService.login(login).subscribe(
       (data: LoginResponse) => {
-        console.log(data)
         sessionStorage.setItem(Constants.KEY_TOKEN, data.token);
         sessionStorage.setItem(Constants.KEY_TREINADOR, JSON.stringify(data));
         this.router.navigateByUrl(Constants.URL_INICIO);
+        this.toastr.success('Login realizado com sucesso!');
       },
       (error) => {
         console.log(error);
