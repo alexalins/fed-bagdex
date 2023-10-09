@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Bolsa } from '../../model/Bolsa';
 
 @Component({
   selector: 'card-bag',
@@ -7,9 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CardBagComponent implements OnInit {
 
-  @Input() titulo: string = ''
-  @Input() descricao: string = ''
-  @Input() data: string = ''
+  @Input() bolsa!: Bolsa
 
   constructor() { }
 

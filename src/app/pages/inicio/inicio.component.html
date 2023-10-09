@@ -1,3 +1,5 @@
 <p>inicio works!</p>
 <br>
-<card-bag></card-bag>
+<div *ngFor="let bolsa of bolsas">
+  <card-bag [bolsa]="bolsa"></card-bag>
+</div>

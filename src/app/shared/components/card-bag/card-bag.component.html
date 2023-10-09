@@ -1,7 +1,7 @@
-<div class="card">
+<div class="card" [ngClass]="bolsa.tipo">
   <div class="card-body">
-    <div class="titulo">{{titulo}}</div>
-    <div class="descricao">{{descricao}}</div>
-    <div class="data">{{data}}</div>
+    <div class="titulo">{{bolsa.nome}}</div>
+    <div class="descricao">{{bolsa.descricao}}</div>
+    <div class="data text-end">{{bolsa.data}}</div>
   </div>
 </div>
