@@ -17,4 +17,7 @@ export class Constants {
   static readonly FORM_NOME: string = 'nome';
   static readonly FORM_EMAIL: string = 'email';
   static readonly FORM_SENHA: string = 'senha';
+
+  //Tipo Botao
+  static readonly BOTAO_INCLUIR: string = 'incluir';
 }

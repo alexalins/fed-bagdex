@@ -1,15 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter} from '@angular/core';
 
 @Component({
   selector: 'botao-flutuante',
   templateUrl: './botao-flutuante.component.html',
   styleUrls: ['./botao-flutuante.component.css']
 })
-export class BotaoFlutuanteComponent implements OnInit {
+export class BotaoFlutuanteComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+  @Input() tipo: string = '';
 }

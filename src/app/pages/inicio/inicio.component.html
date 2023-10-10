@@ -4,6 +4,6 @@
   <card-bag [bolsa]="bolsa"></card-bag>
 </div>
 
-<botao-flutuante></botao-flutuante>
+<botao-flutuante [tipo]="tipo"></botao-flutuante>
 
 <aviso-lista-vazia *ngIf="!bolsas.length" mensagem="Nenhuma bag encontrada!"></aviso-lista-vazia>

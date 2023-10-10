@@ -1,3 +1,3 @@
-<div class="botao-flutuante">
-  <a href="#"><i class="bi bi-plus-lg icone"></i></a>
+<div class="botao-flutuante" [ngSwitch]="tipo">
+  <a *ngSwitchCase="'incluir'" routerLink=""><i class="bi bi-plus-lg icone"></i></a>
 </div>

@@ -37,4 +37,8 @@ export class InicioComponent implements OnInit {
     let treinador = sessionStorage.getItem(Constants.KEY_TREINADOR);
     return treinador != null ? JSON.parse(treinador) : '';
   }
+
+  get tipo() {
+    return Constants.BOTAO_INCLUIR;
+  }
 }
