@@ -3,3 +3,5 @@
 <div *ngFor="let bolsa of bolsas">
   <card-bag [bolsa]="bolsa"></card-bag>
 </div>
+
+<aviso-lista-vazia *ngIf="!bolsas.length" mensagem="Nenhuma bag encontrada!"></aviso-lista-vazia>

@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
 import { CardBagComponent } from './shared/components/card-bag/card-bag.component';
+import { AvisoListaVaziaComponent } from './shared/components/aviso-lista-vazia/aviso-lista-vazia.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { CardBagComponent } from './shared/components/card-bag/card-bag.componen
     HeaderComponent,
     InicioComponent,
     CardBagComponent,
+    AvisoListaVaziaComponent,
   ],
   imports: [
     BrowserModule,
