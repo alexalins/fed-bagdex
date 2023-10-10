@@ -15,6 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
 import { CardBagComponent } from './shared/components/card-bag/card-bag.component';
 import { AvisoListaVaziaComponent } from './shared/components/aviso-lista-vazia/aviso-lista-vazia.component';
+import { BotaoFlutuanteComponent } from './shared/components/botao-flutuante/botao-flutuante.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AvisoListaVaziaComponent } from './shared/components/aviso-lista-vazia/
     InicioComponent,
     CardBagComponent,
     AvisoListaVaziaComponent,
+    BotaoFlutuanteComponent,
   ],
   imports: [
     BrowserModule,
