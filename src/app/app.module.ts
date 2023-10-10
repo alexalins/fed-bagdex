@@ -16,6 +16,7 @@ import { ToastContainerModule, ToastrModule } from 'ngx-toastr';
 import { CardBagComponent } from './shared/components/card-bag/card-bag.component';
 import { AvisoListaVaziaComponent } from './shared/components/aviso-lista-vazia/aviso-lista-vazia.component';
 import { BotaoFlutuanteComponent } from './shared/components/botao-flutuante/botao-flutuante.component';
+import { SalvarBolsaComponent } from './pages/bolsa/salvar-bolsa/salvar-bolsa.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { BotaoFlutuanteComponent } from './shared/components/botao-flutuante/bot
     CardBagComponent,
     AvisoListaVaziaComponent,
     BotaoFlutuanteComponent,
+    SalvarBolsaComponent,
   ],
   imports: [
     BrowserModule,
