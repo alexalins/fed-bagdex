@@ -1,2 +1,17 @@
+<div class="form card">
+  <div class="card-body">
+    <form  [formGroup]="formCadastro" (ngSubmit)="cadastrar()">
+      <input type="text" class="form-control input" placeholder="Nome *" aria-label="Nome" aria-describedby="basic-addon1" formControlName="nome" name="nome">
+      <textarea type="text" class="form-control input" placeholder="Descrição" aria-label="Descrição" aria-describedby="basic-addon1" formControlName="descricao" name="descricao"></textarea>
+      <select class="form-select input" aria-label="Tipo da bag" formControlName="tipo">
+        <option disabled selected value="">Selecione o tipo da Bag * </option>
+        <option *ngFor="let tipo of listTipos" [value]="tipo.id" >{{tipo.descricao}}</option>
+      </select>
 
-<p>salvar-bolsa works!</p>
+      <div class="botoes">
+        <button type="submit" class="btn btn-danger" [disabled]="formCadastro.invalid">Cadastrar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
