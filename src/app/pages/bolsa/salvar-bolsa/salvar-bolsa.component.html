@@ -2,11 +2,18 @@
   <div class="card-body">
     <form  [formGroup]="formCadastro" (ngSubmit)="cadastrar()">
       <input type="text" class="form-control input" placeholder="Nome *" aria-label="Nome" aria-describedby="basic-addon1" formControlName="nome" name="nome">
-      <textarea type="text" class="form-control input" placeholder="Descrição" aria-label="Descrição" aria-describedby="basic-addon1" formControlName="descricao" name="descricao"></textarea>
+      <textarea rows="3" type="text" class="form-control input descricao" placeholder="Descrição" aria-label="Descrição" aria-describedby="basic-addon1" formControlName="descricao" name="descricao"></textarea>
       <select class="form-select input" aria-label="Tipo da bag" formControlName="tipo">
         <option disabled selected value="">Selecione o tipo da Bag * </option>
-        <option *ngFor="let tipo of listTipos" [value]="tipo.id" >{{tipo.descricao}}</option>
+        <option value="1">Nenhum</option>
+        <option value="2">Quero ter</option>
+        <option value="3">Já tenho</option>
+        <option value="4">Estou procurando</option>
       </select>
+
+      <alerta-error *ngIf="formPreenchido" mensagem="Campos obrigatorios não preenchidos!" ></alerta-error>
+      <alerta-error *ngIf="formPreenchidoComEspaco" mensagem="Campos obrigatorios preenchidos com espaço!" ></alerta-error>
+      <alerta-error *ngIf="formCadastro.controls['nome'].errors?.['minlength']" mensagem="Campo nome é maior que 4 dígitos!"></alerta-error>
 
       <div class="botoes">
         <button type="submit" class="btn btn-danger" [disabled]="formCadastro.invalid">Cadastrar</button>
