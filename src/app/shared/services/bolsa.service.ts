@@ -5,6 +5,7 @@ import { TreinadorRequest } from '../model/request/treinador';
 import { Observable, catchError, throwError } from 'rxjs';
 import { Bolsa } from '../model/bolsa';
 import { TokenUtil } from '../utils/tokenUtil';
+import { BolsaRequest } from '../model/request/bolsa';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,16 @@ export class BolsaService {
     const headers = TokenUtil.getHeaders();
 
     return this.http.post<Bolsa>(`${this.apiUrl}/treinador`, treinador, { headers })
+      .pipe(
+        catchError((e) => {
+          return throwError(e);
+        })
+      );
+  }
+
+  salvar(bolsa: BolsaRequest): Observable<any> {
+    const headers = TokenUtil.getHeaders();
+    return this.http.post<any>(`${this.apiUrl}/salvar`, bolsa, { headers })
       .pipe(
         catchError((e) => {
           return throwError(e);

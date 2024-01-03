@@ -1,3 +1,6 @@
+import { Treinador } from "../model/treinador";
+import { Constants } from "./constants";
+
 export class DataUtil {
   static formatarData(dataStr: string): string {
     const data = new Date(dataStr);
@@ -6,5 +9,14 @@ export class DataUtil {
     const ano = data.getFullYear();
 
     return `${dia}/${mes}/${ano}`;
+  }
+
+  static getUserLogado(): Treinador {
+    let json = sessionStorage.getItem(Constants.KEY_TREINADOR);
+    if(json) {
+      const treinador: Treinador = JSON.parse(json);
+      return treinador;
+    }
+    return new Treinador(0, '', '');
   }
 }
