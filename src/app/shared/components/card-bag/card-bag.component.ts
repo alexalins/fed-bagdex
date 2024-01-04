@@ -9,11 +9,15 @@ import { DataUtil } from '../../utils/dataUtil';
 })
 export class CardBagComponent implements OnInit {
 
-  @Input() bolsa!: Bolsa
+  @Input() bolsa!: Bolsa;
 
   constructor() { }
 
   ngOnInit(): void {
+    if (!this.bolsa) {
+      this.bolsa = new Bolsa('', '', '', '', []);
+    }
+
     this.bolsa.data = DataUtil.formatarData(this.bolsa.data);
   }
 

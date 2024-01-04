@@ -26,19 +26,14 @@ export class SalvarBolsaComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  get listTipos() {
-    return JsonUtil.listaTipos();
-  }
-
   formCadastro = new FormGroup({
     nome: new FormControl('', [Validators.minLength(4), Validators.required, ValidacoesUtil.noWhitespaceValidator]),
     descricao: new FormControl(''),
     tipo: new FormControl('', Validators.required),
   });
 
-  cadastrar() {
+  salvar() {
     let bolsa: BolsaRequest = this.montarRequest();
-    console.log(bolsa)
     this.bolsaService.salvar(bolsa).subscribe(
       (data: BolsaRequest) => {
         this.toastr.success('Bag salva com sucesso!');

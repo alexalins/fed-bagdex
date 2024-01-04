@@ -1,6 +1,6 @@
 <div class="form card">
   <div class="card-body">
-    <form [formGroup]="formCadastro" (ngSubmit)="cadastrar()">
+    <form [formGroup]="formCadastro" (ngSubmit)="salvar()">
       <input type="text" class="form-control input" placeholder="Nome *" aria-label="Nome"
         aria-describedby="basic-addon1" formControlName="nome" name="nome">
       <textarea rows="3" type="text" class="form-control input descricao" placeholder="Descrição" aria-label="Descrição"
