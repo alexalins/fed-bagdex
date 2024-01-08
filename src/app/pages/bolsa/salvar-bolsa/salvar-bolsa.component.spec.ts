@@ -73,4 +73,40 @@ describe('SalvarBolsaComponent', () => {
 
     expect(toastrServiceSpy.error).toHaveBeenCalledWith('Erro ao salvar bag!');
   });
+
+  it('dado que chame formPreenchidoSemEspaco passando com toque e com espaço', () => {
+    component.formCadastro.controls[Constants.FORM_NOME].markAsTouched();
+    component.formCadastro.controls[Constants.FORM_TIPO].markAsTouched();
+
+    component.formCadastro.controls[Constants.FORM_NOME].setErrors({ 'whitespace': true });
+    component.formCadastro.controls[Constants.FORM_TIPO].setErrors({ 'whitespace': true });
+
+    const result = component.formPreenchidoSemEspaco;
+
+    expect(result).toBeFalsy();
+  });
+
+  it('dado que chame formPreenchidoComEspaco passando sem toque e com espaço', () => {
+    component.formCadastro.controls[Constants.FORM_NOME].setErrors({ 'whitespace': true });
+    component.formCadastro.controls[Constants.FORM_TIPO].setErrors({ 'whitespace': true });
+
+    const result = component.formPreenchidoSemEspaco;
+
+    expect(result).toBeTruthy();
+  });
+
+  it('dado que chame formPreenchidoComEspaco passando com toque e sem espaço', () => {
+    component.formCadastro.controls[Constants.FORM_NOME].markAsTouched();
+    component.formCadastro.controls[Constants.FORM_TIPO].markAsTouched();
+
+    const result = component.formPreenchidoSemEspaco;
+
+    expect(result).toBeTruthy();
+  });
+
+  it('dado que chame formPreenchidoComEspaco passando sem toque e sem espaço', () => {
+    const result = component.formPreenchidoSemEspaco;
+
+    expect(result).toBeTruthy();
+  });
 });

@@ -62,7 +62,7 @@ describe('CadastroComponent', () => {
 
     const result = component.formPreenchido;
 
-    expect(result).toBeFalsy();
+    expect(result).toBeTruthy();
   })
 
   it('dado que chame formPreenchido passando marcado como tocado', () => {
@@ -71,16 +71,16 @@ describe('CadastroComponent', () => {
     component.formCadastro.controls[Constants.FORM_SENHA].markAsTouched();
     const result = component.formPreenchido;
 
-    expect(result).toBeTruthy();
+    expect(result).toBeFalsy();
   });
 
   it('dado que chame formPreenchido passando sem toque e invalido', () => {
     const result = component.formPreenchido;
 
-    expect(result).toBeFalsy();
+    expect(result).toBeTruthy();
   });
 
-  it('dado que chame formPreenchidoComEspaco passando com toque e com espaço', () => {
+  it('dado que chame formPreenchidoSemEspaco passando com toque e com espaço', () => {
     component.formCadastro.controls[Constants.FORM_NOME].markAsTouched();
     component.formCadastro.controls[Constants.FORM_EMAIL].markAsTouched();
     component.formCadastro.controls[Constants.FORM_SENHA].markAsTouched();
@@ -89,9 +89,9 @@ describe('CadastroComponent', () => {
     component.formCadastro.controls[Constants.FORM_EMAIL].setErrors({ 'whitespace': true });
     component.formCadastro.controls[Constants.FORM_SENHA].setErrors({ 'whitespace': true });
 
-    const result = component.formPreenchidoComEspaco;
+    const result = component.formPreenchidoSemEspaco;
 
-    expect(result).toBeTruthy();
+    expect(result).toBeFalsy();
   });
 
   it('dado que chame formPreenchidoComEspaco passando sem toque e com espaço', () => {
@@ -99,9 +99,9 @@ describe('CadastroComponent', () => {
     component.formCadastro.controls[Constants.FORM_EMAIL].setErrors({ 'whitespace': true });
     component.formCadastro.controls[Constants.FORM_SENHA].setErrors({ 'whitespace': true });
 
-    const result = component.formPreenchidoComEspaco;
+    const result = component.formPreenchidoSemEspaco;
 
-    expect(result).toBeFalsy();
+    expect(result).toBeTruthy();
   });
 
   it('dado que chame formPreenchidoComEspaco passando com toque e sem espaço', () => {
@@ -109,15 +109,15 @@ describe('CadastroComponent', () => {
     component.formCadastro.controls[Constants.FORM_EMAIL].markAsTouched();
     component.formCadastro.controls[Constants.FORM_SENHA].markAsTouched();
 
-    const result = component.formPreenchidoComEspaco;
+    const result = component.formPreenchidoSemEspaco;
 
-    expect(result).toBeFalsy();
+    expect(result).toBeTruthy();
   });
 
   it('dado que chame formPreenchidoComEspaco passando sem toque e sem espaço', () => {
-    const result = component.formPreenchidoComEspaco;
+    const result = component.formPreenchidoSemEspaco;
 
-    expect(result).toBeFalsy();
+    expect(result).toBeTruthy();
   });
 
   it('dado que chame o cadastrar com sucesso', () => {
