@@ -36,4 +36,15 @@ export class BolsaService {
         })
       );
   }
+
+  getBolsaById(id: number): Observable<Bolsa> {
+    const headers = TokenUtil.getHeaders();
+
+    return this.http.get<Bolsa>(`${this.apiUrl}/${id}`, { headers })
+      .pipe(
+        catchError((e) => {
+          return throwError(e);
+        })
+      );
+  }
 }

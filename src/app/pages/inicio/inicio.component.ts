@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Bolsa } from 'src/app/shared/model/bolsa';
 import { BolsaService } from 'src/app/shared/services/bolsa.service';
@@ -14,7 +13,7 @@ export class InicioComponent implements OnInit {
 
   bolsas: Bolsa[] = [];
 
-  constructor(private toastr: ToastrService, private router: Router, private bolsaService: BolsaService) { }
+  constructor(private toastr: ToastrService, private bolsaService: BolsaService) { }
 
   ngOnInit(): void {
     this.getBolsas();
@@ -28,7 +27,7 @@ export class InicioComponent implements OnInit {
       },
       (error) => {
         console.log(error);
-        this.toastr.error('Erro ao recupar as bags do usuário!');
+        this.toastr.error('Erro ao recuperar as bags do usuário!');
       }
     )
   }

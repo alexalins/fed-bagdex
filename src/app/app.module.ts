@@ -18,6 +18,8 @@ import { AvisoListaVaziaComponent } from './shared/components/aviso-lista-vazia/
 import { BotaoFlutuanteComponent } from './shared/components/botao-flutuante/botao-flutuante.component';
 import { SalvarBolsaComponent } from './pages/bolsa/salvar-bolsa/salvar-bolsa.component';
 import { EspacamentoComponent } from './shared/components/espacamento/espacamento.component';
+import { DetalheBolsaComponent } from './pages/bolsa/detalhe-bolsa/detalhe-bolsa.component';
+import { CardDetalhesComponent } from './shared/components/card-detalhes/card-detalhes.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { EspacamentoComponent } from './shared/components/espacamento/espacament
     BotaoFlutuanteComponent,
     SalvarBolsaComponent,
     EspacamentoComponent,
+    DetalheBolsaComponent,
+    CardDetalhesComponent,
   ],
   imports: [
     BrowserModule,

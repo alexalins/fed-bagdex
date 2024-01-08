@@ -14,10 +14,6 @@ export class CardBagComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    if (!this.bolsa) {
-      this.bolsa = new Bolsa('', '', '', '', []);
-    }
-
     this.bolsa.data = DataUtil.formatarData(this.bolsa.data);
   }
 

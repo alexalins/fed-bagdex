@@ -1,4 +1,4 @@
-<div class="card" [ngClass]="bolsa.tipo">
+<div class="card" [ngClass]="bolsa.tipo" [routerLink]="['/bolsa/detalhe', bolsa.id]">
   <div class="card-body">
     <div class="titulo">{{bolsa.nome}}</div>
     <div class="descricao">{{bolsa.descricao}}</div>
