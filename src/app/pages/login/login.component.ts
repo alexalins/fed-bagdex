@@ -14,6 +14,8 @@ import { ValidacoesUtil } from 'src/app/shared/utils/validacoesUtil';
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
+  campos: string [] = [Constants.FORM_EMAIL, Constants.FORM_SENHA];
+
   formLogin = new FormGroup({
     email: new FormControl('', [
       Validators.email,
@@ -62,20 +64,10 @@ export class LoginComponent implements OnInit {
   }
 
   get formPreenchido() {
-    return (
-      this.formLogin.controls[Constants.FORM_EMAIL].errors?.['required'] &&
-      this.formLogin.controls[Constants.FORM_EMAIL].touched ||
-      this.formLogin.controls[Constants.FORM_SENHA].errors?.['required'] &&
-      this.formLogin.controls[Constants.FORM_SENHA].touched
-    );
+    return ValidacoesUtil.isFormValidacao(this.campos, this.formLogin);
   }
 
-  get formPreenchidoComEspaco() {
-    return (
-      (this.formLogin.controls[Constants.FORM_EMAIL].errors?.['whitespace'] &&
-        this.formLogin.controls[Constants.FORM_EMAIL].touched) ||
-      (this.formLogin.controls[Constants.FORM_SENHA].errors?.['whitespace'] &&
-        this.formLogin.controls[Constants.FORM_SENHA].touched)
-    );
+  get formPreenchidoSemEspaco() {
+    return ValidacoesUtil.isFormValidacao(this.campos, this.formLogin, 'whitespace');
   }
 }

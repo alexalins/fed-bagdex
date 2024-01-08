@@ -14,6 +14,7 @@ import { Constants } from 'src/app/shared/utils/constants';
   styleUrls: ['./cadastro.component.css'],
 })
 export class CadastroComponent implements OnInit {
+  campos: string [] = [Constants.FORM_NOME, Constants.FORM_EMAIL, Constants.FORM_SENHA];
 
   formCadastro = new FormGroup({
     nome: new FormControl('', [Validators.minLength(4), Validators.required, ValidacoesUtil.noWhitespaceValidator]),
@@ -55,24 +56,10 @@ export class CadastroComponent implements OnInit {
   }
 
   get formPreenchido() {
-    return (
-      (this.formCadastro.controls[Constants.FORM_NOME].errors?.['required'] &&
-        this.formCadastro.controls[Constants.FORM_NOME].touched) ||
-      (this.formCadastro.controls[Constants.FORM_EMAIL].errors?.['required'] &&
-        this.formCadastro.controls[Constants.FORM_EMAIL].touched) ||
-      (this.formCadastro.controls[Constants.FORM_SENHA].errors?.['required'] &&
-        this.formCadastro.controls[Constants.FORM_SENHA].touched)
-    );
+    return ValidacoesUtil.isFormValidacao(this.campos, this.formCadastro);
   }
 
-  get formPreenchidoComEspaco() {
-    return (
-      (this.formCadastro.controls[Constants.FORM_NOME].errors?.['whitespace'] &&
-        this.formCadastro.controls[Constants.FORM_NOME].touched) ||
-      (this.formCadastro.controls[Constants.FORM_EMAIL].errors?.['whitespace'] &&
-        this.formCadastro.controls[Constants.FORM_EMAIL].touched) ||
-      (this.formCadastro.controls[Constants.FORM_SENHA].errors?.['whitespace'] &&
-        this.formCadastro.controls[Constants.FORM_SENHA].touched)
-    );
+  get formPreenchidoSemEspaco() {
+    return ValidacoesUtil.isFormValidacao(this.campos, this.formCadastro, 'whitespace');
   }
 }

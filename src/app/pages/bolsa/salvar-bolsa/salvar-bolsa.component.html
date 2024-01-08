@@ -13,8 +13,8 @@
         <option value="4">Estou procurando</option>
       </select>
 
-      <alerta-error *ngIf="formPreenchido" mensagem="Campos obrigatorios não preenchidos!"></alerta-error>
-      <alerta-error *ngIf="formPreenchidoComEspaco"
+      <alerta-error *ngIf="!formPreenchido" mensagem="Campos obrigatorios não preenchidos!"></alerta-error>
+      <alerta-error *ngIf="!formPreenchidoSemEspaco"
         mensagem="Campos obrigatorios preenchidos com espaço!"></alerta-error>
       <alerta-error *ngIf="formCadastro.controls['nome'].errors?.['minlength']"
         mensagem="Campo nome é maior que 4 dígitos!"></alerta-error>

@@ -7,7 +7,6 @@ import { Treinador } from 'src/app/shared/model/treinador';
 import { BolsaService } from 'src/app/shared/services/bolsa.service';
 import { Constants } from 'src/app/shared/utils/constants';
 import { DataUtil } from 'src/app/shared/utils/dataUtil';
-import { JsonUtil } from 'src/app/shared/utils/jsonUtil';
 import { ValidacoesUtil } from 'src/app/shared/utils/validacoesUtil';
 
 @Component({
@@ -16,6 +15,7 @@ import { ValidacoesUtil } from 'src/app/shared/utils/validacoesUtil';
   styleUrls: ['./salvar-bolsa.component.css']
 })
 export class SalvarBolsaComponent implements OnInit {
+  campos: string [] = [Constants.FORM_NOME, Constants.FORM_TIPO];
 
   constructor(
     private bolsaService: BolsaService,
@@ -55,18 +55,10 @@ export class SalvarBolsaComponent implements OnInit {
   }
 
   get formPreenchido() {
-    return (
-      (this.formCadastro.controls[Constants.FORM_NOME].errors?.['required'] &&
-        this.formCadastro.controls[Constants.FORM_NOME].touched) ||
-      (this.formCadastro.controls[Constants.FORM_TIPO].errors?.['required'] &&
-        this.formCadastro.controls[Constants.FORM_TIPO].touched)
-    );
+    return ValidacoesUtil.isFormValidacao(this.campos, this.formCadastro);
   }
 
-  get formPreenchidoComEspaco() {
-    return (
-      (this.formCadastro.controls[Constants.FORM_NOME].errors?.['whitespace'] &&
-        this.formCadastro.controls[Constants.FORM_NOME].touched)
-    );
+  get formPreenchidoSemEspaco() {
+    return ValidacoesUtil.isFormValidacao([Constants.FORM_NOME], this.formCadastro, 'whitespace');
   }
 }
