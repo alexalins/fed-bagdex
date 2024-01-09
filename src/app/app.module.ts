@@ -20,6 +20,8 @@ import { SalvarBolsaComponent } from './pages/bolsa/salvar-bolsa/salvar-bolsa.co
 import { EspacamentoComponent } from './shared/components/espacamento/espacamento.component';
 import { DetalheBolsaComponent } from './pages/bolsa/detalhe-bolsa/detalhe-bolsa.component';
 import { CardDetalhesComponent } from './shared/components/card-detalhes/card-detalhes.component';
+import { CardPokemonComponent } from './shared/components/card-pokemon/card-pokemon.component';
+import { CardListPokemonComponent } from './shared/components/card-list-pokemon/card-list-pokemon.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { CardDetalhesComponent } from './shared/components/card-detalhes/card-de
     EspacamentoComponent,
     DetalheBolsaComponent,
     CardDetalhesComponent,
+    CardPokemonComponent,
+    CardListPokemonComponent,
   ],
   imports: [
     BrowserModule,

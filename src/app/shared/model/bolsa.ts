@@ -6,7 +6,7 @@ export class Bolsa {
   descricao: string;
   tipo: string;
   data: string;
-  pokemon?: Pokemon[];
+  pokemon: Pokemon[];
 
   constructor() {
     this.id = 0;

@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Bolsa } from 'src/app/shared/model/bolsa';
 import { BolsaService } from 'src/app/shared/services/bolsa.service';
+import { Constants } from 'src/app/shared/utils/constants';
 
 @Component({
   selector: 'app-detalhe-bolsa',
@@ -31,13 +32,16 @@ export class DetalheBolsaComponent implements OnInit {
       .toPromise()
       .then(
         (data: any) => {
-          console.log(data);
           this.bolsa = data;
+          //this.bolsa.pokemon = [{id: 1, nome: 'Charmander', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png'}]
         },
         (error) => {
-          console.log(error);
           this.toastr.error('Erro ao carregar dados da Bag!');
         }
       );
+  }
+
+  get tipo() {
+    return Constants.BOTAO_INCLUIR_POKEMON;
   }
 }

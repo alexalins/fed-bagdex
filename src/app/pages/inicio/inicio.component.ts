@@ -38,6 +38,6 @@ export class InicioComponent implements OnInit {
   }
 
   get tipo() {
-    return Constants.BOTAO_INCLUIR;
+    return Constants.BOTAO_INCLUIR_BAG;
   }
 }

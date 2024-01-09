@@ -1,0 +1,9 @@
+.botoes {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+}
+
+.botao {
+  margin: 10px;
+}

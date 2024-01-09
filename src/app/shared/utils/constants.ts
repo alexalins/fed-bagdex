@@ -21,5 +21,6 @@ export class Constants {
   static readonly FORM_TIPO: string = 'tipo';
 
   //Tipo Botao
-  static readonly BOTAO_INCLUIR: string = 'incluir';
+  static readonly BOTAO_INCLUIR_BAG: string = 'incluir-bag';
+  static readonly BOTAO_INCLUIR_POKEMON: string = 'incluir-pokemon';
 }

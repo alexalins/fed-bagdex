@@ -1,4 +1,13 @@
 .card {
   margin: 15px;
   border-radius: 10px;
+  min-height: 150px;
+}
+
+.titulo .descricao{
+  padding: 10px;
+}
+
+.descricao {
+  padding-top: 16px;
 }

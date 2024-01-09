@@ -1,0 +1,11 @@
+<div class="card" *ngIf="listaPokemon.length; else listaPokemonVazia">
+  <div class="card-body">
+    <ng-template ngFor let-pokemon [ngForOf]="listaPokemon">
+      <app-card-pokemon [pokemon]="pokemon"></app-card-pokemon>
+    </ng-template>
+  </div>
+</div>
+
+<ng-template #listaPokemonVazia>
+  <aviso-lista-vazia mensagem="Nenhum pokémon encontrado!"></aviso-lista-vazia>
+</ng-template>
