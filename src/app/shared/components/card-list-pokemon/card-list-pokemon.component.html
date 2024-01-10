@@ -1,7 +1,7 @@
 <div class="card" *ngIf="listaPokemon.length; else listaPokemonVazia">
-  <div class="card-body">
+  <div class="card-body d-flex justify-content-start flex-wrap">
     <ng-template ngFor let-pokemon [ngForOf]="listaPokemon">
-      <app-card-pokemon [pokemon]="pokemon"></app-card-pokemon>
+      <app-card-pokemon [pokemon]="pokemon" class="d-inline-flex"></app-card-pokemon>
     </ng-template>
   </div>
 </div>
