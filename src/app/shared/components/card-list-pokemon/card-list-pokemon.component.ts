@@ -10,6 +10,8 @@ export class CardListPokemonComponent implements OnInit {
 
   @Input() listaPokemon: Pokemon[] = [];
 
+  filtro: string = '';
+
   constructor() { }
 
   ngOnInit(): void {

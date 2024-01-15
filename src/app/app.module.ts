@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CadastroComponent } from './pages/cadastro/cadastro.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AlertaComponent } from './shared/components/alerta/alerta.component';
 import { HeaderComponent } from './shared/components/header/header.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
@@ -22,6 +22,7 @@ import { DetalheBolsaComponent } from './pages/bolsa/detalhe-bolsa/detalhe-bolsa
 import { CardDetalhesComponent } from './shared/components/card-detalhes/card-detalhes.component';
 import { CardPokemonComponent } from './shared/components/card-pokemon/card-pokemon.component';
 import { CardListPokemonComponent } from './shared/components/card-list-pokemon/card-list-pokemon.component';
+import { FiltroPorNomePipe } from './shared/pipes/filtro-por-nome.pipe';
 
 @NgModule({
   declarations: [
@@ -40,8 +41,11 @@ import { CardListPokemonComponent } from './shared/components/card-list-pokemon/
     CardDetalhesComponent,
     CardPokemonComponent,
     CardListPokemonComponent,
+    FiltroPorNomePipe,
   ],
   imports: [
+    CommonModule,
+    FormsModule,
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,

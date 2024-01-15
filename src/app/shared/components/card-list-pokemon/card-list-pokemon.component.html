@@ -1,8 +1,12 @@
 <div class="card align-items-center" *ngIf="listaPokemon.length; else listaPokemonVazia">
+  <div>
+    <input type="text" class="form-control input" placeholder="Digite nome do pokémon"
+     aria-label="Filtro" aria-describedby="basic-addon1" [(ngModel)]="filtro" name="filtro">
+  </div>
   <div class="card-body d-flex justify-content-start flex-wrap">
-    <ng-template ngFor let-pokemon [ngForOf]="listaPokemon">
+    <div *ngFor="let pokemon of listaPokemon | filtroPorNome: filtro">
       <app-card-pokemon [pokemon]="pokemon" class="d-inline-flex"></app-card-pokemon>
-    </ng-template>
+    </div>
   </div>
 
   <nav aria-label="Paginação de pokémon">
