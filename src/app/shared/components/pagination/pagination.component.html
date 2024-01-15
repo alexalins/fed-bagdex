@@ -1,0 +1,9 @@
+<div class="pagination page-item">
+  <button (click)="changePage('prev')" [disabled]="currentPage === 1" class="page-link botoes">
+    <span aria-hidden="true">&laquo;</span>
+  </button>
+  <span>Página {{ currentPage }} de {{ totalPages }}</span>
+  <button (click)="changePage('next')" [disabled]="currentPage === totalPages" class="page-link botoes">
+    <span aria-hidden="true">&raquo;</span>
+  </button>
+</div>

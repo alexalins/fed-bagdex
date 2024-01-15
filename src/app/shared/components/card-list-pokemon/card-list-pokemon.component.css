@@ -8,3 +8,7 @@
   margin-bottom: 20px;
   width: 300px;
 }
+
+.card-body {
+  height: 650px !important;
+}

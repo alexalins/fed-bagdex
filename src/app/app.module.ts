@@ -23,6 +23,7 @@ import { CardDetalhesComponent } from './shared/components/card-detalhes/card-de
 import { CardPokemonComponent } from './shared/components/card-pokemon/card-pokemon.component';
 import { CardListPokemonComponent } from './shared/components/card-list-pokemon/card-list-pokemon.component';
 import { FiltroPorNomePipe } from './shared/pipes/filtro-por-nome.pipe';
+import { PaginationComponent } from './shared/components/pagination/pagination.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { FiltroPorNomePipe } from './shared/pipes/filtro-por-nome.pipe';
     CardPokemonComponent,
     CardListPokemonComponent,
     FiltroPorNomePipe,
+    PaginationComponent,
   ],
   imports: [
     CommonModule,

@@ -1,31 +1,32 @@
-<div class="card align-items-center" *ngIf="listaPokemon.length; else listaPokemonVazia">
+<div
+  class="card align-items-center"
+  *ngIf="listaPokemon.length; else listaPokemonVazia"
+>
   <div>
-    <input type="text" class="form-control input" placeholder="Digite nome do pokémon"
-     aria-label="Filtro" aria-describedby="basic-addon1" [(ngModel)]="filtro" name="filtro">
+    <input
+      type="text"
+      class="form-control input"
+      placeholder="Digite nome do pokémon"
+      aria-label="Filtro"
+      aria-describedby="basic-addon1"
+      [(ngModel)]="filtro"
+      name="filtro"
+    />
   </div>
   <div class="card-body d-flex justify-content-start flex-wrap">
-    <div *ngFor="let pokemon of listaPokemon | filtroPorNome: filtro">
-      <app-card-pokemon [pokemon]="pokemon" class="d-inline-flex"></app-card-pokemon>
+    <div *ngFor="let pokemon of displayedData | filtroPorNome : filtro">
+      <app-card-pokemon
+        [pokemon]="pokemon"
+        class="d-inline-flex"
+      ></app-card-pokemon>
     </div>
   </div>
 
-  <nav aria-label="Paginação de pokémon">
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous">
-          <span aria-hidden="true">&laquo;</span>
-        </a>
-      </li>
-      <li class="page-item"><a class="page-link" href="#">1</a></li>
-      <li class="page-item"><a class="page-link" href="#">2</a></li>
-      <li class="page-item"><a class="page-link" href="#">3</a></li>
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next">
-          <span aria-hidden="true">&raquo;</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
+  <app-pagination
+    [currentPage]="currentPage"
+    [totalPages]="totalPages"
+    (pageChanged)="onPageChanged($event)"
+  ></app-pagination>
 </div>
 
 <ng-template #listaPokemonVazia>
