@@ -9,7 +9,7 @@ import { DataUtil } from '../../utils/dataUtil';
 })
 export class CardBagComponent implements OnInit {
 
-  @Input() bolsa!: Bolsa;
+  @Input() bolsa: Bolsa = new Bolsa();
 
   constructor() { }
 

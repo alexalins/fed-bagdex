@@ -35,6 +35,7 @@ describe('BolsaService', () => {
     };
 
     const mockBolsa: Bolsa = {
+      id: 1,
       nome: "teste",
       descricao: "",
       tipo: "nenhum",

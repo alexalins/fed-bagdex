@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CardListPokemonComponent } from './card-list-pokemon.component';
+import { FiltroPorNomePipe } from '../../pipes/filtro-por-nome.pipe';
 
 describe('CardListPokemonComponent', () => {
   let component: CardListPokemonComponent;
@@ -8,7 +9,8 @@ describe('CardListPokemonComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardListPokemonComponent ]
+      declarations: [ CardListPokemonComponent ],
+      providers: [FiltroPorNomePipe]
     })
     .compileComponents();
   });

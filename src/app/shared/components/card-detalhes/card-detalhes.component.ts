@@ -8,7 +8,7 @@ import { Bolsa } from '../../model/bolsa';
 })
 export class CardDetalhesComponent implements OnInit {
 
-  @Input() bolsa!: Bolsa;
+  @Input() bolsa: Bolsa = new Bolsa();
 
   constructor() { }
 
