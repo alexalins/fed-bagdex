@@ -63,7 +63,7 @@ import { PaginationComponent } from './shared/components/pagination/pagination.c
       enableHtml: true
     }),
   ],
-  providers: [],
+  providers: [FiltroPorNomePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

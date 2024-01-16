@@ -14,7 +14,7 @@
     />
   </div>
   <div class="card-body d-flex justify-content-start flex-wrap">
-    <div *ngFor="let pokemon of displayedData | filtroPorNome : filtro">
+    <div *ngFor="let pokemon of displayedData">
       <app-card-pokemon
         [pokemon]="pokemon"
         class="d-inline-flex"

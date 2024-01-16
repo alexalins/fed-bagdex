@@ -10,5 +10,5 @@
 }
 
 .card-body {
-  height: 650px !important;
+  min-height: 650px !important;
 }

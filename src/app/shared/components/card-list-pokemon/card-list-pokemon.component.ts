@@ -1,5 +1,6 @@
 import { AfterViewChecked, Component, Input, OnInit } from '@angular/core';
 import { Pokemon } from '../../model/pokemon';
+import { FiltroPorNomePipe } from '../../pipes/filtro-por-nome.pipe';
 
 @Component({
   selector: 'app-card-list-pokemon',
@@ -10,16 +11,21 @@ export class CardListPokemonComponent implements OnInit, AfterViewChecked {
 
   @Input() listaPokemon: Pokemon[] = [];
 
+
+  listaPokemonAux: Pokemon[] = [];
   filtro: string = '';
   pageSize = 16;
   currentPage = 1;
   displayedData: Pokemon[] = [];
+
+  constructor(private pipeFiltro: FiltroPorNomePipe) {}
 
   ngOnInit(): void {
   }
 
   ngAfterViewChecked() {
    if(this.listaPokemon.length) {
+    this.listaPokemonAux = this.pipeFiltro.transform(this.listaPokemon, this.filtro);
     this.updateDisplayedData();
    }
   }
@@ -27,7 +33,7 @@ export class CardListPokemonComponent implements OnInit, AfterViewChecked {
   updateDisplayedData() {
     const startIndex = (this.currentPage - 1) * this.pageSize;
     const endIndex = startIndex + this.pageSize;
-    this.displayedData = this.listaPokemon.slice(startIndex, endIndex);
+    this.displayedData = this.listaPokemonAux.slice(startIndex, endIndex);
   }
 
   onPageChanged(action: string) {
@@ -41,7 +47,7 @@ export class CardListPokemonComponent implements OnInit, AfterViewChecked {
   }
 
   get totalPages() {
-    return Math.ceil(this.listaPokemon.length / this.pageSize);
+    return Math.ceil(this.listaPokemonAux.length / this.pageSize);
   }
 
 }
