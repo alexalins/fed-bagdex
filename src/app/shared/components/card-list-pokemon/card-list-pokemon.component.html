@@ -1,4 +1,4 @@
-<div class="card align-items-center">
+<div class="card align-items-center card-body" [ngClass]="!listaPokemon.length ? 'card-lista-vazia' : ''">
   <div>
     <input
       type="text"
@@ -8,10 +8,11 @@
       aria-describedby="basic-addon1"
       [(ngModel)]="filtro"
       name="filtro"
+      [hidden]="!listaPokemon.length"
     />
   </div>
   <div
-    class="card-body d-flex justify-content-start flex-wrap"
+    class="d-flex justify-content-start flex-wrap"
     *ngIf="displayedData.length; else listaPokemonVazia"
   >
     <div *ngFor="let pokemon of displayedData">
@@ -31,7 +32,7 @@
 
   <ng-template #listaPokemonVazia>
     <aviso-lista-vazia
-      css="width: 50px; height: 50px"
+      [css]="true"
       mensagem="Nenhum pokémon encontrado!"
     ></aviso-lista-vazia>
   </ng-template>

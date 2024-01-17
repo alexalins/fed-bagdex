@@ -33,31 +33,6 @@ export class DetalheBolsaComponent implements OnInit {
       .then(
         (data: any) => {
           this.bolsa = data;
-          this.bolsa.pokemon = [
-          {id: 1, nome: 'Bulbasaur', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png'},
-          {id: 4, nome: 'Charmander', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png'},
-          {id: 7, nome: 'Squirtle', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png'},
-          {id: 1, nome: 'Bulbasaur', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png'},
-          {id: 4, nome: 'Charmander', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png'},
-          {id: 7, nome: 'Squirtle', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png'},
-          {id: 1, nome: 'Bulbasaur', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png'},
-          {id: 4, nome: 'Charmander', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png'},
-          {id: 7, nome: 'Squirtle', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png'},
-          {id: 1, nome: 'Bulbasaur', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png'},
-          {id: 4, nome: 'Charmander', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png'},
-          {id: 7, nome: 'Squirtle', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png'},
-          {id: 1, nome: 'Bulbasaur', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png'},
-          {id: 4, nome: 'Charmander', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png'},
-          {id: 7, nome: 'Squirtle', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png'},
-          {id: 1, nome: 'Bulbasaur', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png'},
-          {id: 4, nome: 'Charmander', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png'},
-          {id: 7, nome: 'Squirtle', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png'},
-          {id: 1, nome: 'Bulbasaur', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png'},
-          {id: 4, nome: 'Charmander', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png'},
-          {id: 7, nome: 'Squirtle', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png'},
-          {id: 1, nome: 'Bulbasaur', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png'},
-          {id: 4, nome: 'Charmander', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png'},
-          {id: 7, nome: 'Squirtle', foto: 'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/007.png'}]
         },
         (error) => {
           this.toastr.error('Erro ao carregar dados da Bag!');
