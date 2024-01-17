@@ -9,4 +9,5 @@ export class AvisoListaVaziaComponent {
 
   caminhoImagem: string = '../../../../assets/image/pikachu-search.png';
   @Input() mensagem: string = '';
+  @Input() css?: string;
 }

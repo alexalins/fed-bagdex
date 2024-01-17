@@ -20,3 +20,9 @@ p {
   color: black;
   white-space: nowrap;
 }
+
+.card-align {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
