@@ -7,10 +7,10 @@
         aria-describedby="basic-addon1" formControlName="descricao" name="descricao" maxlength="300"></textarea>
       <select class="form-select input" aria-label="Tipo da bag" formControlName="tipo">
         <option disabled selected value="">Selecione o tipo da Bag * </option>
-        <option value="1">Nenhum</option>
-        <option value="2">Quero ter</option>
-        <option value="3">Já tenho</option>
-        <option value="4">Estou procurando</option>
+        <option value="NENHUM">Nenhum</option>
+        <option value="QUERO_TER">Quero ter</option>
+        <option value="JA_TENHO">Já tenho</option>
+        <option value="ESTOU_PROCURANDO">Estou procurando</option>
       </select>
 
       <alerta-error *ngIf="!formPreenchido" mensagem="Campos obrigatorios não preenchidos!"></alerta-error>

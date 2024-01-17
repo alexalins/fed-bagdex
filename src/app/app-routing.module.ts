@@ -12,7 +12,8 @@ const routes: Routes = [
   { path: 'cadastro', component: CadastroComponent},
   { path: 'inicio', component: InicioComponent},
   { path: 'bolsa/salvar', component: SalvarBolsaComponent},
-  { path: 'bolsa/detalhe/:id', component: DetalheBolsaComponent}
+  { path: 'bolsa/detalhe/:id', component: DetalheBolsaComponent},
+  { path: 'bolsa/editar/:id', component: SalvarBolsaComponent},
 ];
 
 @NgModule({

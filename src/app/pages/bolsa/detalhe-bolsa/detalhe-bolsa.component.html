@@ -1,6 +1,6 @@
 <app-card-detalhes [bolsa]="bolsa"></app-card-detalhes>
 <div class="botoes">
-  <button type="button" class="btn btn-primary botao">Editar</button>
+  <button type="button" class="btn btn-primary botao" [routerLink]="['/bolsa/editar', bolsa.id]">Editar</button>
   <button type="button" class="btn btn-danger botao">Excluir</button>
 </div>
 

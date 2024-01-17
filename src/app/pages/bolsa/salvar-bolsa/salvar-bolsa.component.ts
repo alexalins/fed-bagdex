@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Bolsa } from 'src/app/shared/model/bolsa';
 import { BolsaRequest } from 'src/app/shared/model/request/bolsa';
 import { Treinador } from 'src/app/shared/model/treinador';
 import { BolsaService } from 'src/app/shared/services/bolsa.service';
@@ -16,21 +17,29 @@ import { ValidacoesUtil } from 'src/app/shared/utils/validacoesUtil';
 })
 export class SalvarBolsaComponent implements OnInit {
   campos: string [] = [Constants.FORM_NOME, Constants.FORM_TIPO];
-
-  constructor(
-    private bolsaService: BolsaService,
-    private toastr: ToastrService,
-    private router: Router
-  ) { }
-
-  ngOnInit(): void {
-  }
+  idBolsa: number = 0;
+  bolsa: Bolsa = new Bolsa();
 
   formCadastro = new FormGroup({
     nome: new FormControl('', [Validators.minLength(4), Validators.required, ValidacoesUtil.noWhitespaceValidator]),
     descricao: new FormControl(''),
     tipo: new FormControl('', Validators.required),
-  });
+  })
+
+  constructor(
+    private bolsaService: BolsaService,
+    private toastr: ToastrService,
+    private router: Router,
+    private activatedRoute: ActivatedRoute
+  ) { }
+
+  ngOnInit(): void {
+    let id = this.activatedRoute.snapshot.paramMap.get('id');
+    this.idBolsa = id ? Number.parseInt(id) : 0;
+    if(this.idBolsa != 0) {
+      this.getDetalhesBolsa();
+    }
+  }
 
   salvar() {
     let bolsa: BolsaRequest = this.montarRequest();
@@ -46,12 +55,33 @@ export class SalvarBolsaComponent implements OnInit {
     );
   }
 
+  getDetalhesBolsa() {
+    this.bolsaService
+      .getBolsaById(this.idBolsa)
+      .toPromise()
+      .then(
+        (data: any) => {
+          this.bolsa = data;
+          this.montarFormBolsa();
+        },
+        (error) => {
+          this.toastr.error('Erro ao carregar dados da Bag!');
+        }
+      );
+  }
+
   montarRequest(): BolsaRequest {
     let nome = this.formCadastro.get(Constants.FORM_NOME)?.value;
     let descricao = this.formCadastro.get(Constants.FORM_DESCRICAO)?.value;
     let tipo = this.formCadastro.get(Constants.FORM_TIPO)?.value;
     let treinador: Treinador = DataUtil.getUserLogado();
     return new BolsaRequest(nome, descricao, tipo, treinador);
+  }
+
+  montarFormBolsa() {
+    this.formCadastro.get(Constants.FORM_NOME)?.setValue(this.bolsa.nome);
+    this.formCadastro.get(Constants.FORM_DESCRICAO)?.setValue(this.bolsa.descricao);
+    this.formCadastro.get(Constants.FORM_TIPO)?.setValue(this.bolsa.tipo);
   }
 
   get formPreenchido() {

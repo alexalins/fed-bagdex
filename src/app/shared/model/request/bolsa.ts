@@ -1,6 +1,7 @@
 import { Treinador } from "../treinador";
 
 export class BolsaRequest {
+  id?: string;
   nome: string;
   descricao: string;
   tipo: number;

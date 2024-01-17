@@ -29,7 +29,8 @@ export class BolsaService {
 
   salvar(bolsa: BolsaRequest): Observable<any> {
     const headers = TokenUtil.getHeaders();
-    return this.http.post<any>(`${this.apiUrl}/salvar`, bolsa, { headers })
+    let urlCompleta = bolsa.id ? `${this.apiUrl}/editar` : `${this.apiUrl}/salvar`;
+    return this.http.post<any>(urlCompleta, bolsa, { headers })
       .pipe(
         catchError((e) => {
           return throwError(e);
