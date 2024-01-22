@@ -78,7 +78,7 @@ describe('BolsaService', () => {
     req.flush({}, errorResponse);
   });
 
-  it('Dado que o usuario passe uma bolsa valida par salvar', () => {
+  it('Dado que o usuario passe uma bolsa valida para salvar', () => {
     const bolsa: BolsaRequest = {
       nome: 'teste',
       descricao: 'teste',
@@ -97,7 +97,7 @@ describe('BolsaService', () => {
   });
 
 
-  it('Dado que o usuario passe uma bolsa invalida par salvar', () => {
+  it('Dado que o usuario passe uma bolsa invalida para salvar', () => {
     const errorResponse = { status: 401, statusText: 'Forbidden' };
 
     const mockBolsa: any = {
@@ -119,5 +119,86 @@ describe('BolsaService', () => {
 
     const req = httpMock.expectOne(`${service.apiUrl}/salvar`);
     req.flush({}, errorResponse);
+  });
+
+  it('Dado que o usuario passe uma bolsa valida para uditar', () => {
+    const bolsa: BolsaRequest = {
+      id: 1,
+      nome: 'teste',
+      descricao: 'teste',
+      tipo: 1,
+      treinador: {
+        id: 1,
+        nome: 'alexa',
+        email: 'alexa@test.com'
+      }
+    };
+
+    service.update(bolsa).subscribe((response) => {});
+
+    const req = httpMock.expectOne(`${service.apiUrl}/editar/${bolsa.id}`);
+    expect(req.request.method).toBe('PUT');
+  });
+
+
+  it('Dado que o usuario passe uma bolsa invalida para editar', () => {
+    const errorResponse = { status: 401, statusText: 'Forbidden' };
+
+    const mockBolsa: any = {
+      nome: 'teste',
+      descricao: 'teste',
+      tipo: 1,
+      treinador: null
+    };
+
+    service.update(mockBolsa).subscribe(
+      () => {
+        fail('A requisição não deveria ter sido bem-sucedida');
+      },
+      error => {
+        console.log(error.status)
+        expect(error.status).toBe(errorResponse.status);
+      }
+    );
+
+    const req = httpMock.expectOne(`${service.apiUrl}/editar/${mockBolsa.id}`);
+    req.flush({}, errorResponse);
+  });
+
+  it('Dado que chame salvarBolsa sem id' , () => {
+    const bolsa: BolsaRequest = {
+      nome: 'teste',
+      descricao: 'teste',
+      tipo: 1,
+      treinador: {
+        id: 1,
+        nome: 'alexa',
+        email: 'alexa@test.com'
+      }
+    };
+    service.salvarBolsa(bolsa);
+    service.salvar(bolsa).subscribe((response) => {});
+
+    const req = httpMock.expectOne(`${service.apiUrl}/salvar`);
+    expect(req.request.method).toBe('POST');
+  });
+
+  it('Dado que chame salvarBolsa com id', () => {
+    const bolsa: BolsaRequest = {
+      id: 1,
+      nome: 'teste',
+      descricao: 'teste',
+      tipo: 1,
+      treinador: {
+        id: 1,
+        nome: 'alexa',
+        email: 'alexa@test.com'
+      }
+    };
+    service.salvarBolsa(bolsa);
+    service.update(bolsa).subscribe((response) => {});
+
+    const req = httpMock.expectOne(`${service.apiUrl}/editar/${bolsa.id}`);
+    expect(req.request.method).toBe('PUT');
   });
 });

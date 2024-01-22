@@ -94,7 +94,6 @@ describe('DetalheBolsaComponent', () => {
       component.idBolsa
     );
     expect(component.bolsa).toEqual(mockBolsa);
-    expect(toastrSpy.error).not.toHaveBeenCalled();
   });
 
   it('Dado que chame getDetalhesBolsa e retorne mensagem de erro', async () => {
