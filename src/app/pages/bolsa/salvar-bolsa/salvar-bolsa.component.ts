@@ -43,7 +43,7 @@ export class SalvarBolsaComponent implements OnInit {
 
   salvar() {
     let bolsa: BolsaRequest = this.montarRequest();
-    this.bolsaService.salvar(bolsa).subscribe(
+    this.bolsaService.salvarBolsa(bolsa).subscribe(
       (data: BolsaRequest) => {
         this.toastr.success('Bag salva com sucesso!');
         this.router.navigateByUrl(Constants.URL_INICIO);
@@ -75,7 +75,9 @@ export class SalvarBolsaComponent implements OnInit {
     let descricao = this.formCadastro.get(Constants.FORM_DESCRICAO)?.value;
     let tipo = this.formCadastro.get(Constants.FORM_TIPO)?.value;
     let treinador: Treinador = DataUtil.getUserLogado();
-    return new BolsaRequest(nome, descricao, tipo, treinador);
+    let bolsa = new BolsaRequest( nome, descricao, tipo, treinador);
+    bolsa.id = this.bolsa.id;
+    return bolsa;
   }
 
   montarFormBolsa() {

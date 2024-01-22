@@ -8,18 +8,18 @@ import { TokenUtil } from '../utils/tokenUtil';
 import { BolsaRequest } from '../model/request/bolsa';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class BolsaService {
-
   apiUrl = environment.apiUrl + '/bolsa';
 
-  constructor(public http: HttpClient) { }
+  constructor(public http: HttpClient) {}
 
   getBolsaDoTreinador(treinador: TreinadorRequest): Observable<Bolsa> {
     const headers = TokenUtil.getHeaders();
 
-    return this.http.post<Bolsa>(`${this.apiUrl}/treinador`, treinador, { headers })
+    return this.http
+      .post<Bolsa>(`${this.apiUrl}/treinador`, treinador, { headers })
       .pipe(
         catchError((e) => {
           return throwError(e);
@@ -29,8 +29,8 @@ export class BolsaService {
 
   salvar(bolsa: BolsaRequest): Observable<any> {
     const headers = TokenUtil.getHeaders();
-    let urlCompleta = bolsa.id ? `${this.apiUrl}/editar` : `${this.apiUrl}/salvar`;
-    return this.http.post<any>(urlCompleta, bolsa, { headers })
+    return this.http
+      .post<any>(`${this.apiUrl}/salvar`, bolsa, { headers })
       .pipe(
         catchError((e) => {
           return throwError(e);
@@ -41,11 +41,29 @@ export class BolsaService {
   getBolsaById(id: number): Observable<Bolsa> {
     const headers = TokenUtil.getHeaders();
 
-    return this.http.get<Bolsa>(`${this.apiUrl}/${id}`, { headers })
+    return this.http.get<Bolsa>(`${this.apiUrl}/${id}`, { headers }).pipe(
+      catchError((e) => {
+        return throwError(e);
+      })
+    );
+  }
+
+  update(bolsa: BolsaRequest): Observable<any> {
+    const headers = TokenUtil.getHeaders();
+    return this.http
+      .put<any>(`${this.apiUrl}/editar/${bolsa.id}`, bolsa, { headers })
       .pipe(
         catchError((e) => {
           return throwError(e);
         })
       );
+  }
+
+  salvarBolsa(bolsa: BolsaRequest): Observable<any> {
+    if(bolsa?.id) {
+      return this.update(bolsa);
+    } else {
+      return this.salvar(bolsa)
+    }
   }
 }
