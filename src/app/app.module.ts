@@ -24,6 +24,7 @@ import { CardPokemonComponent } from './shared/components/card-pokemon/card-poke
 import { CardListPokemonComponent } from './shared/components/card-list-pokemon/card-list-pokemon.component';
 import { FiltroPorNomePipe } from './shared/pipes/filtro-por-nome.pipe';
 import { PaginationComponent } from './shared/components/pagination/pagination.component';
+import { ModalPadraoComponent } from './shared/components/modal-padrao/modal-padrao.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { PaginationComponent } from './shared/components/pagination/pagination.c
     CardListPokemonComponent,
     FiltroPorNomePipe,
     PaginationComponent,
+    ModalPadraoComponent,
   ],
   imports: [
     CommonModule,

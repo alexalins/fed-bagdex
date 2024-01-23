@@ -1,9 +1,27 @@
 <app-card-detalhes [bolsa]="bolsa"></app-card-detalhes>
 <div class="botoes">
-  <button type="button" class="btn btn-primary botao" [routerLink]="['/bolsa/editar', bolsa.id]">Editar</button>
-  <button type="button" class="btn btn-danger botao">Excluir</button>
+  <button
+    type="button"
+    class="btn btn-primary botao"
+    [routerLink]="['/bolsa/editar', bolsa.id]"
+  >
+    Editar
+  </button>
+  <button
+    type="button"
+    class="btn btn-danger botao"
+    (click)="openModalExcluir()"
+  >
+    Excluir
+  </button>
 </div>
 
 <app-card-list-pokemon [listaPokemon]="bolsa.pokemon"></app-card-list-pokemon>
 
 <botao-flutuante [tipo]="tipo"></botao-flutuante>
+<app-modal-padrao
+  title="Deseja excluir essa bag?"
+  text="Ao clicar em deletar sua bag será excluida."
+  buttonAction="Deletar"
+  [showModal]="isExcluir"
+></app-modal-padrao>

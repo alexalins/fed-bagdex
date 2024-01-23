@@ -13,11 +13,12 @@ import { Constants } from 'src/app/shared/utils/constants';
 export class DetalheBolsaComponent implements OnInit {
   bolsa: Bolsa = new Bolsa();
   idBolsa: number = 0;
+  isExcluir: boolean = false;
 
   constructor(
     private bolsaService: BolsaService,
     private toastr: ToastrService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
   ) {}
 
   ngOnInit(): void {
@@ -42,5 +43,9 @@ export class DetalheBolsaComponent implements OnInit {
 
   get tipo() {
     return Constants.BOTAO_INCLUIR_POKEMON;
+  }
+
+  openModalExcluir(){
+    this.isExcluir = true;
   }
 }
