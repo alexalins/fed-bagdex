@@ -45,7 +45,7 @@ export class DetalheBolsaComponent implements OnInit {
     return Constants.BOTAO_INCLUIR_POKEMON;
   }
 
-  openModalExcluir(){
-    this.isExcluir = true;
+  modalExcluir(e?: object){
+    this.isExcluir = !this.isExcluir;
   }
 }
