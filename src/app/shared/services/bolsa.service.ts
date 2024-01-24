@@ -59,6 +59,17 @@ export class BolsaService {
       );
   }
 
+  deletar(id: number): Observable<any> {
+    const headers = TokenUtil.getHeaders();
+    return this.http
+      .delete<any>(`${this.apiUrl}/${id}`, { headers })
+      .pipe(
+        catchError((e) => {
+          return throwError(e);
+        })
+      );
+  }
+
   salvarBolsa(bolsa: BolsaRequest): Observable<any> {
     if(bolsa?.id) {
       return this.update(bolsa);
