@@ -17,6 +17,7 @@ describe('DetalheBolsaComponent', () => {
   const toastrSpy = jasmine.createSpyObj('ToastrService', ['success', 'error']);
   let bolsaServiceSpy: BolsaService;
   let activatedRoute: ActivatedRoute;
+  let router: any;
 
   let mockBolsa: Bolsa = {
     id: 1,
@@ -61,6 +62,7 @@ describe('DetalheBolsaComponent', () => {
     component = fixture.componentInstance;
     bolsaServiceSpy = TestBed.inject(BolsaService);
     activatedRoute = TestBed.inject(ActivatedRoute);
+    router = TestBed.inject(Router);
     fixture.detectChanges();
   });
 
@@ -98,7 +100,9 @@ describe('DetalheBolsaComponent', () => {
 
   it('Dado que chame getDetalhesBolsa e retorne mensagem de erro', async () => {
     const mockError = new Error('Test error');
-    spyOn(bolsaServiceSpy, 'getBolsaById').and.returnValue(throwError(mockError));
+    spyOn(bolsaServiceSpy, 'getBolsaById').and.returnValue(
+      throwError(mockError)
+    );
 
     await component.getDetalhesBolsa();
 
@@ -109,5 +113,23 @@ describe('DetalheBolsaComponent', () => {
     expect(toastrSpy.error).toHaveBeenCalledWith(
       'Erro ao carregar dados da Bag!'
     );
+  });
+
+  it('dado que chame deletarBolsa e retorne sucesso', async () => {
+    spyOn(bolsaServiceSpy, 'deletar').and.returnValue(of(null));
+    spyOn(router, 'navigateByUrl').and.stub();
+    component.idBolsa = 1;
+
+    await component.deletarBolsa();
+    expect(bolsaServiceSpy.deletar).toHaveBeenCalledWith(1);
+    expect(toastrSpy.success).toHaveBeenCalledWith('Bag deletada com sucesso!');
+  });
+
+  it('Dado que chame deletarBolsa e retorne mensagem de erro', async () => {
+    const mockError = new Error('Test error');
+    spyOn(bolsaServiceSpy, 'deletar').and.returnValue(throwError(mockError));
+    component.idBolsa = 100;
+    await component.deletarBolsa();
+    expect(toastrSpy.error).toHaveBeenCalledWith('Erro ao deletar Bag!');
   });
 });

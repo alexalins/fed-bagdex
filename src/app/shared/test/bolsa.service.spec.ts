@@ -112,7 +112,6 @@ describe('BolsaService', () => {
         fail('A requisição não deveria ter sido bem-sucedida');
       },
       error => {
-        console.log(error.status)
         expect(error.status).toBe(errorResponse.status);
       }
     );
@@ -121,7 +120,7 @@ describe('BolsaService', () => {
     req.flush({}, errorResponse);
   });
 
-  it('Dado que o usuario passe uma bolsa valida para uditar', () => {
+  it('Dado que o usuario passe uma bolsa valida para editar', () => {
     const bolsa: BolsaRequest = {
       id: 1,
       nome: 'teste',
@@ -134,7 +133,7 @@ describe('BolsaService', () => {
       }
     };
 
-    service.update(bolsa).subscribe((response) => {});
+    service.editar(bolsa).subscribe((response) => {});
 
     const req = httpMock.expectOne(`${service.apiUrl}/editar/${bolsa.id}`);
     expect(req.request.method).toBe('PUT');
@@ -151,12 +150,11 @@ describe('BolsaService', () => {
       treinador: null
     };
 
-    service.update(mockBolsa).subscribe(
+    service.editar(mockBolsa).subscribe(
       () => {
         fail('A requisição não deveria ter sido bem-sucedida');
       },
       error => {
-        console.log(error.status)
         expect(error.status).toBe(errorResponse.status);
       }
     );
@@ -196,9 +194,33 @@ describe('BolsaService', () => {
       }
     };
     service.salvarBolsa(bolsa);
-    service.update(bolsa).subscribe((response) => {});
+    service.editar(bolsa).subscribe((response) => {});
 
     const req = httpMock.expectOne(`${service.apiUrl}/editar/${bolsa.id}`);
     expect(req.request.method).toBe('PUT');
+  });
+
+  it('Dado que o usuario passe um id de bolsa para excluir', () => {
+    service.deletar(1).subscribe((response) => {});
+
+    const req = httpMock.expectOne(`${service.apiUrl}/${1}`);
+    expect(req.request.method).toBe('DELETE');
+  });
+
+
+  it('Dado que o usuario passe uma id invalido para excluir', () => {
+    const errorResponse = { status: 401, statusText: 'Forbidden' };
+
+    service.deletar(100).subscribe(
+      () => {
+        fail('A requisição não deveria ter sido bem-sucedida');
+      },
+      error => {
+        expect(error.status).toBe(errorResponse.status);
+      }
+    );
+
+    const req = httpMock.expectOne(`${service.apiUrl}/${100}`);
+    req.flush({}, errorResponse);
   });
 });

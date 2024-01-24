@@ -48,7 +48,7 @@ export class BolsaService {
     );
   }
 
-  update(bolsa: BolsaRequest): Observable<any> {
+  editar(bolsa: BolsaRequest): Observable<any> {
     const headers = TokenUtil.getHeaders();
     return this.http
       .put<any>(`${this.apiUrl}/editar/${bolsa.id}`, bolsa, { headers })
@@ -72,7 +72,7 @@ export class BolsaService {
 
   salvarBolsa(bolsa: BolsaRequest): Observable<any> {
     if(bolsa?.id) {
-      return this.update(bolsa);
+      return this.editar(bolsa);
     } else {
       return this.salvar(bolsa)
     }

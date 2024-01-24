@@ -9,7 +9,7 @@ import { LoginResponse } from 'src/app/shared/model/response/login';
 import { Constants } from 'src/app/shared/utils/constants';
 import { of, throwError } from 'rxjs';
 import { TreinadorService } from 'src/app/shared/services/treinador.service';
-import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 
 describe('LoginComponent', () => {
