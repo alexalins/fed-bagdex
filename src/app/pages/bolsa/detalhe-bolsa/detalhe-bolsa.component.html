@@ -23,5 +23,6 @@
   title="Deseja excluir essa bag?"
   text="Ao clicar em deletar sua bag será excluida."
   buttonAction="Deletar"
-  (onAlert)="modalExcluir($event)"
+  (onAction)="deletarBolsa()"
+  (onClose)="modalExcluir()"
 ></app-modal-padrao>

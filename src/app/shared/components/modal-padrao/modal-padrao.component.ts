@@ -10,11 +10,15 @@ export class ModalPadraoComponent {
   @Input() title: string = '';
   @Input() text: string = '';
   @Input() buttonAction: string = '';
-  @Output() onAlert = new EventEmitter();
+  @Output() onAction = new EventEmitter();
+  @Output() onClose = new EventEmitter();
 
+  actionModal() {
+    this.onAction.emit();
+  }
 
-  closeModal(e: object) {
-    this.onAlert.emit(e);
+  closeModal() {
+    this.onClose.emit();
   }
 
 }

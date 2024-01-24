@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Bolsa } from 'src/app/shared/model/bolsa';
 import { BolsaService } from 'src/app/shared/services/bolsa.service';
@@ -19,6 +19,7 @@ export class DetalheBolsaComponent implements OnInit {
     private bolsaService: BolsaService,
     private toastr: ToastrService,
     private activatedRoute: ActivatedRoute,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -41,11 +42,26 @@ export class DetalheBolsaComponent implements OnInit {
       );
   }
 
+  deletarBolsa() {
+    this.bolsaService
+      .deletar(this.idBolsa)
+      .toPromise()
+      .then(
+        (data: any) => {
+          this.toastr.success('Bag deletada com sucesso!');
+          this.router.navigateByUrl(Constants.URL_INICIO);
+        },
+        (error) => {
+          this.toastr.error('Erro ao deletar Bag!');
+        }
+      );
+  }
+
   get tipo() {
     return Constants.BOTAO_INCLUIR_POKEMON;
   }
 
-  modalExcluir(e?: object){
+  modalExcluir(){
     this.isExcluir = !this.isExcluir;
   }
 }
