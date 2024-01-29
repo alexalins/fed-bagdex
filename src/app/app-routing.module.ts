@@ -5,6 +5,7 @@ import { CadastroComponent } from './pages/cadastro/cadastro.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { SalvarBolsaComponent } from './pages/bolsa/salvar-bolsa/salvar-bolsa.component';
 import { DetalheBolsaComponent } from './pages/bolsa/detalhe-bolsa/detalhe-bolsa.component';
+import { ListaPokemonComponent } from './pages/pokemon/lista-pokemon/lista-pokemon.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full'},
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'bolsa/salvar', component: SalvarBolsaComponent},
   { path: 'bolsa/detalhe/:id', component: DetalheBolsaComponent},
   { path: 'bolsa/editar/:id', component: SalvarBolsaComponent},
+  { path: 'lista/pokemon', component: ListaPokemonComponent},
 ];
 
 @NgModule({
