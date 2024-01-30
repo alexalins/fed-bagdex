@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, Input, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, Input } from '@angular/core';
 import { Pokemon } from '../../model/pokemon';
 import { FiltroPorNomePipe } from '../../pipes/filtro-por-nome.pipe';
 
@@ -7,10 +7,9 @@ import { FiltroPorNomePipe } from '../../pipes/filtro-por-nome.pipe';
   templateUrl: './card-list-pokemon.component.html',
   styleUrls: ['./card-list-pokemon.component.css']
 })
-export class CardListPokemonComponent implements OnInit, AfterViewChecked {
+export class CardListPokemonComponent implements AfterViewChecked {
 
   @Input() listaPokemon: Pokemon[] = [];
-
 
   listaPokemonAux: Pokemon[] = [];
   filtro: string = '';
@@ -19,9 +18,6 @@ export class CardListPokemonComponent implements OnInit, AfterViewChecked {
   displayedData: Pokemon[] = [];
 
   constructor(private pipeFiltro: FiltroPorNomePipe) {}
-
-  ngOnInit(): void {
-  }
 
   ngAfterViewChecked() {
    if(this.listaPokemon.length) {

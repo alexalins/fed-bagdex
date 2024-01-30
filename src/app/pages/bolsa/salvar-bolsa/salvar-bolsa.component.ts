@@ -49,7 +49,6 @@ export class SalvarBolsaComponent implements OnInit {
         this.router.navigateByUrl(Constants.URL_INICIO);
       },
       (error) => {
-        console.log(error);
         this.toastr.error('Erro ao salvar bag!');
       }
     );

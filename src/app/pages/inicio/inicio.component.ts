@@ -22,11 +22,9 @@ export class InicioComponent implements OnInit {
   getBolsas() {
     this.bolsaService.getBolsaDoTreinador(this.treinador).toPromise().then(
       (data: any) => {
-        console.log(data);
         this.bolsas = data;
       },
       (error) => {
-        console.log(error);
         this.toastr.error('Erro ao recuperar as bags do usuário!');
       }
     )

@@ -38,7 +38,6 @@ export class CadastroComponent implements OnInit {
         this.router.navigateByUrl(Constants.URL_LOGIN);
       },
       (error) => {
-        console.log(error);
         if (error.status === Constants.CODE_CONFLICT) {
           this.toastr.error('E-mail já cadastrado!');
         } else {

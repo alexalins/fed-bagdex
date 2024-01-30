@@ -47,7 +47,6 @@ export class LoginComponent implements OnInit {
         this.toastr.success('Login realizado com sucesso!');
       },
       (error) => {
-        console.log(error);
         if (error.status === Constants.CODE_UNAUTHORIZED) {
           this.toastr.error('Campo e-mail/senha inválido!');
         } else {

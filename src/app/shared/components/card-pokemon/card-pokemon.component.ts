@@ -1,18 +1,24 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { DataUtil } from 'src/app/shared/utils/dataUtil';
+import { Component, Input} from '@angular/core';
 import { Pokemon } from '../../model/pokemon';
+import { PokemonApiResponse } from '../../model/response/pokemonAPi';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-card-pokemon',
   templateUrl: './card-pokemon.component.html',
   styleUrls: ['./card-pokemon.component.css']
 })
-export class CardPokemonComponent implements OnInit {
+export class CardPokemonComponent {
+  @Input() pokemon?: Pokemon = new Pokemon();
+  @Input() pokemonApi?: PokemonApiResponse = new PokemonApiResponse();
 
-  @Input() pokemon: Pokemon = new Pokemon();
 
-  constructor() { }
-
-  ngOnInit(): void {
+  get id() {
+    return this.pokemonApi ? DataUtil.extrairNumeroDaURL(this.pokemonApi?.url) : 0;
   }
 
+  get urlFoto() {
+    return this.pokemonApi ? `${environment.apiPokePicture}/${DataUtil.adicionaZerosAEsquerda(this.id)}.png` : '';
+  }
 }

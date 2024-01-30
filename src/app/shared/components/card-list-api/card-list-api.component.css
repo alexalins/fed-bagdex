@@ -1,0 +1,19 @@
+.card {
+  margin: 10px;
+  border-radius: 10px;
+}
+
+.input {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 300px;
+}
+
+.card-body {
+  min-height: 650px !important;
+}
+
+.card-lista-vazia {
+  display: flex;
+  justify-content: center;
+}
