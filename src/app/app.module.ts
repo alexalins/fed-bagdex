@@ -27,6 +27,7 @@ import { PaginationComponent } from './shared/components/pagination/pagination.c
 import { ModalPadraoComponent } from './shared/components/modal-padrao/modal-padrao.component';
 import { ListaPokemonComponent } from './pages/pokemon/lista-pokemon/lista-pokemon.component';
 import { CardListApiComponent } from './shared/components/card-list-api/card-list-api.component';
+import { DetalhePokemonComponent } from './pages/pokemon/detalhe-pokemon/detalhe-pokemon.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { CardListApiComponent } from './shared/components/card-list-api/card-lis
     ModalPadraoComponent,
     ListaPokemonComponent,
     CardListApiComponent,
+    DetalhePokemonComponent,
   ],
   imports: [
     CommonModule,
