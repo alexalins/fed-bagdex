@@ -1,4 +1,7 @@
-<div class="card align-items-center card-body" [ngClass]="!listaPokemon.length ? 'card-lista-vazia' : ''">
+<div
+  class="card align-items-center card-body"
+  [ngClass]="!listaPokemon.length ? 'card-lista-vazia' : ''"
+>
   <div>
     <input
       type="text"
@@ -11,14 +14,13 @@
       [hidden]="!listaPokemon.length"
     />
   </div>
-  <div class="wrapper"
-    *ngIf="listaPokemonAux.length; else listaPokemonVazia"
-  >
-    <div *ngFor="let pokemon of listaPokemonAux" >
-      <app-card-pokemon
-        [pokemonApi]="pokemon"
-      ></app-card-pokemon>
+  <div *ngIf="listaPokemonAux.length; else listaPokemonVazia">
+    <div class="wrapper">
+      <div *ngFor="let pokemon of listaPokemonAux">
+        <app-card-pokemon [pokemonApi]="pokemon"></app-card-pokemon>
+      </div>
     </div>
+    <div class="footer"><button (click)="mudarPagina(false)"><< Anterior</button> <button (click)="mudarPagina(true)">Próximo >></button></div>
   </div>
 
   <ng-template #listaPokemonVazia>

@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewChecked, Component, Input } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, EventEmitter, Input, Output } from '@angular/core';
 import { PokemonApiResponse } from '../../model/response/pokemonAPi';
 import { FiltroPorNomePipe } from '../../pipes/filtro-por-nome.pipe';
 
@@ -9,19 +9,31 @@ import { FiltroPorNomePipe } from '../../pipes/filtro-por-nome.pipe';
 })
 export class CardListApiComponent implements AfterViewChecked {
   @Input() listaPokemon: PokemonApiResponse[] = [];
+  @Input() urlProximo: string = '';
+  @Input() urlAnterior: string = '';
+  //
+  @Output() public onAlert = new EventEmitter();
+  //
   listaPokemonAux: PokemonApiResponse[] = [];
   filtro: string = '';
 
   constructor(private pipeFiltro: FiltroPorNomePipe) {}
 
   ngAfterViewChecked() {
-    console.log(this.listaPokemon)
     if (this.listaPokemon.length) {
-      console.log(this.listaPokemon)
       this.listaPokemonAux = this.pipeFiltro.transform(
         this.listaPokemon,
         this.filtro
       );
     }
+  }
+
+  mudarPagina(isProx: boolean) {
+    if(isProx)  {
+      this.onAlert.emit({url: this.urlProximo});
+      return;
+    }
+
+    this.onAlert.emit({url: this.urlAnterior});
   }
 }

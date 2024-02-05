@@ -18,8 +18,8 @@ export class ListaPokemonComponent implements OnInit {
     this.getListPokemon();
   }
 
-  getListPokemon() {
-    this.pokemonService.getListPokemon().subscribe(
+  getListPokemon(path: string = '') {
+    this.pokemonService.getListPokemon(path).subscribe(
       (data: DadosPokemonApiResponse) => {
         this.dadosListaPokemon = data;
       },
@@ -27,6 +27,12 @@ export class ListaPokemonComponent implements OnInit {
         this.toastrService.error('Não foi possível retornar dados da PokéApi!')
       }
     )
+  }
+
+  mudarLista(value: any) {
+    if(value.url) {
+      this.getListPokemon(value.url);
+    }
   }
 
 }

@@ -14,7 +14,7 @@ export class PokemonService {
   constructor(public http: HttpClient) { }
 
   getListPokemon(path?: string): Observable<DadosPokemonApiResponse> {
-    let url: string = path ? `${this.BASE_POKE_API}/path`: `${this.BASE_POKE_API}`
+    let url: string = path ? `${path}`: `${this.BASE_POKE_API}`
     return this.http.get<DadosPokemonApiResponse>(url)
       .pipe(
         catchError((e) => {

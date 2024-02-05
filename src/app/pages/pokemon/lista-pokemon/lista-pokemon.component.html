@@ -1,1 +1,6 @@
-<app-card-list-api [listaPokemon]="dadosListaPokemon.results"></app-card-list-api>
+<app-card-list-api
+  [listaPokemon]="dadosListaPokemon.results"
+  [urlAnterior]="dadosListaPokemon.previous"
+  [urlProximo]="dadosListaPokemon.next"
+  (onAlert)="mudarLista($event)"
+></app-card-list-api>
