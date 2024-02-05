@@ -11,14 +11,12 @@
       [hidden]="!listaPokemon.length"
     />
   </div>
-  <div
-    class="d-flex justify-content-start flex-wrap"
+  <div class="wrapper"
     *ngIf="listaPokemonAux.length; else listaPokemonVazia"
   >
-    <div *ngFor="let pokemon of listaPokemonAux">
+    <div *ngFor="let pokemon of listaPokemonAux" >
       <app-card-pokemon
         [pokemonApi]="pokemon"
-        class="d-inline-flex"
       ></app-card-pokemon>
     </div>
   </div>

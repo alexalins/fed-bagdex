@@ -1,4 +1,4 @@
-import { AfterViewInit, ChangeDetectorRef, Component, Input } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, Component, Input } from '@angular/core';
 import { PokemonApiResponse } from '../../model/response/pokemonAPi';
 import { FiltroPorNomePipe } from '../../pipes/filtro-por-nome.pipe';
 
@@ -7,14 +7,15 @@ import { FiltroPorNomePipe } from '../../pipes/filtro-por-nome.pipe';
   templateUrl: './card-list-api.component.html',
   styleUrls: ['./card-list-api.component.css'],
 })
-export class CardListApiComponent implements AfterViewInit {
+export class CardListApiComponent implements AfterViewChecked {
   @Input() listaPokemon: PokemonApiResponse[] = [];
   listaPokemonAux: PokemonApiResponse[] = [];
   filtro: string = '';
 
   constructor(private pipeFiltro: FiltroPorNomePipe) {}
 
-  ngAfterViewInit() {
+  ngAfterViewChecked() {
+    console.log(this.listaPokemon)
     if (this.listaPokemon.length) {
       console.log(this.listaPokemon)
       this.listaPokemonAux = this.pipeFiltro.transform(

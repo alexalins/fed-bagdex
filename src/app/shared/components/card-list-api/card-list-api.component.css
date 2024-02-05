@@ -17,3 +17,9 @@
   display: flex;
   justify-content: center;
 }
+
+.wrapper {
+  display: grid !important;
+  grid-template-columns: repeat(5, 1fr);
+  flex-wrap: wrap !important
+}
