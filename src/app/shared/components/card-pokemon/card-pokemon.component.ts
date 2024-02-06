@@ -15,7 +15,8 @@ export class CardPokemonComponent {
 
 
   get id() {
-    return this.pokemonApi ? DataUtil.extrairNumeroDaURL(this.pokemonApi?.url) : 0;
+    console.log(this.pokemon)
+    return this.pokemonApi?.id ? this.pokemonApi.id : DataUtil.extrairNumeroDaURL(this.pokemonApi!.url);
   }
 
   get urlFoto() {

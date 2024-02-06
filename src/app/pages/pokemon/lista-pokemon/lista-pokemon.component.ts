@@ -3,6 +3,7 @@ import { PokemonService } from './../../../shared/services/pokemon.service';
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { PokemonApiResponse } from 'src/app/shared/model/response/pokemonApi';
 
 @Component({
   selector: 'app-lista-pokemon',
@@ -32,13 +33,13 @@ export class ListaPokemonComponent implements OnInit {
     )
   }
 
-
   getPokemon(nome: string) {
-    this.pokemonService.getListPokemon().subscribe(
-      (data: DadosPokemonApiResponse) => {
-        console.log(data)
-
-        this.dadosListaPokemon = data;
+    this.pokemonService.getPokemon(nome).subscribe(
+      (data: PokemonApiResponse) => {
+        if(data) {
+          this.dadosListaPokemon = new DadosPokemonApiResponse();
+          this.dadosListaPokemon.results.push(data);
+        }
       },
       (error) => {
         this.toastrService.error('Não foi possível retornar dados da PokéApi!')
@@ -50,8 +51,7 @@ export class ListaPokemonComponent implements OnInit {
     if(value.url) {
       this.getListPokemon(value.url);
     } else if (value.nome) {
-      this.getPokemon(value.url);
+      this.getPokemon(value.nome);
     }
   }
-
 }
