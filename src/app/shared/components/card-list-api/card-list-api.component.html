@@ -22,8 +22,8 @@
       </div>
     </div>
     <div class="footer">
-      <button (click)="mudarPagina(false)"><< Anterior</button>
-      <button (click)="mudarPagina(true)">Próximo >></button>
+      <button (click)="mudarPagina(false)" [disabled]="!urlAnterior"><< Anterior</button>
+      <button (click)="mudarPagina(true)" [disabled]="!urlProximo">Próximo >></button>
     </div>
   </div>
 
