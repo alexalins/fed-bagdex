@@ -18,6 +18,7 @@ export class CardListApiComponent implements AfterViewChecked {
   //
   listaPokemonAux: PokemonApiResponse[] = [];
   filtro: string = '';
+  urlAtual: string = '';
 
   constructor(private pipeFiltro: FiltroPorNomePipe) {}
 
@@ -33,10 +34,12 @@ export class CardListApiComponent implements AfterViewChecked {
   mudarPagina(isProx: boolean) {
     if(isProx)  {
       this.onAlert.emit({url: this.urlProximo});
+      this.urlAtual = this.urlProximo;
       return;
     }
 
     this.onAlert.emit({url: this.urlAnterior});
+    this.urlAtual = this.urlAnterior;
   }
 
   buscarPorNome() {
@@ -45,7 +48,8 @@ export class CardListApiComponent implements AfterViewChecked {
 
   verificarFiltro() {
     if (this.filtro === '') {
-      this.onAlert.emit({url: environment.apiPoke});
+      let url = this.urlAtual ? this.urlAtual : environment.apiPoke;
+      this.onAlert.emit({url: url});
     }
   }
 }
