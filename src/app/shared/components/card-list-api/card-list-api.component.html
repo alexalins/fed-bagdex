@@ -2,17 +2,18 @@
   class="card align-items-center card-body"
   [ngClass]="!listaPokemon.length ? 'card-lista-vazia' : ''"
 >
-  <div>
+  <div class="input-group mb-3 input">
     <input
       type="text"
-      class="form-control input"
+      class="form-control"
       placeholder="Digite nome do pokémon"
       aria-label="Filtro"
-      aria-describedby="basic-addon1"
       [(ngModel)]="filtro"
       name="filtro"
-      [hidden]="!listaPokemon.length"
     />
+    <button class="btn btn-outline-secondary" type="button" id="button-addon" (click)="buscarPorNome()">
+      Pesquisar por nome
+    </button>
   </div>
   <div *ngIf="listaPokemonAux.length; else listaPokemonVazia">
     <div class="wrapper">
@@ -20,7 +21,10 @@
         <app-card-pokemon [pokemonApi]="pokemon"></app-card-pokemon>
       </div>
     </div>
-    <div class="footer"><button (click)="mudarPagina(false)"><< Anterior</button> <button (click)="mudarPagina(true)">Próximo >></button></div>
+    <div class="footer">
+      <button (click)="mudarPagina(false)"><< Anterior</button>
+      <button (click)="mudarPagina(true)">Próximo >></button>
+    </div>
   </div>
 
   <ng-template #listaPokemonVazia>

@@ -1,4 +1,4 @@
-import { PokemonApiResponse } from "./pokemonAPi";
+import { PokemonApiResponse } from "./pokemonApi";
 
 export class DadosPokemonApiResponse {
   count: number;

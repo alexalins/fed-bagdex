@@ -1,8 +1,8 @@
 import { DataUtil } from 'src/app/shared/utils/dataUtil';
 import { Component, Input} from '@angular/core';
 import { Pokemon } from '../../model/pokemon';
-import { PokemonApiResponse } from '../../model/response/pokemonAPi';
 import { environment } from 'src/environments/environment';
+import { PokemonApiResponse } from '../../model/response/pokemonApi';
 
 @Component({
   selector: 'app-card-pokemon',
