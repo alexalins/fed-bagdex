@@ -1,0 +1,13 @@
+.card {
+  margin: 10px;
+  border-radius: 10px;
+  width: 60%;
+  margin-top: 8vh;
+  height: calc(100vh - 22vh);
+}
+
+.centralizar-imagem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
