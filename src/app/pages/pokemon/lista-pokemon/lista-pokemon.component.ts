@@ -46,7 +46,6 @@ export class ListaPokemonComponent implements OnInit {
   }
 
   mudarLista(value: any) {
-    console.log(value)
     if(value.url) {
       this.getListPokemon(value.url);
     } else if (value.nome) {

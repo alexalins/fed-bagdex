@@ -40,7 +40,7 @@ export class CardListApiComponent implements AfterViewChecked {
   }
 
   buscarPorNome() {
-    this.onAlert.emit({nome: `${this.filtro}`});
+    this.onAlert.emit({nome: `${this.filtro.toLowerCase()}`});
   }
 
   verificarFiltro() {
