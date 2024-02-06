@@ -15,7 +15,6 @@ export class CardPokemonComponent {
 
 
   get id() {
-    console.log(this.pokemon)
     return this.pokemonApi?.id ? this.pokemonApi.id : DataUtil.extrairNumeroDaURL(this.pokemonApi!.url);
   }
 

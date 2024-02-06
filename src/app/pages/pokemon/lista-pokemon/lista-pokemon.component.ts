@@ -23,8 +23,6 @@ export class ListaPokemonComponent implements OnInit {
   getListPokemon(path: string = '') {
     this.pokemonService.getListPokemon(path).subscribe(
       (data: DadosPokemonApiResponse) => {
-        console.log(data)
-
         this.dadosListaPokemon = data;
       },
       (error) => {
@@ -48,6 +46,7 @@ export class ListaPokemonComponent implements OnInit {
   }
 
   mudarLista(value: any) {
+    console.log(value)
     if(value.url) {
       this.getListPokemon(value.url);
     } else if (value.nome) {

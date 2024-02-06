@@ -1,6 +1,7 @@
 import { AfterViewChecked, Component, EventEmitter, Input, Output } from '@angular/core';
 import { FiltroPorNomePipe } from '../../pipes/filtro-por-nome.pipe';
 import { PokemonApiResponse } from '../../model/response/pokemonApi';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -40,5 +41,11 @@ export class CardListApiComponent implements AfterViewChecked {
 
   buscarPorNome() {
     this.onAlert.emit({nome: `${this.filtro}`});
+  }
+
+  verificarFiltro() {
+    if (this.filtro === '') {
+      this.onAlert.emit({url: environment.apiPoke});
+    }
   }
 }
