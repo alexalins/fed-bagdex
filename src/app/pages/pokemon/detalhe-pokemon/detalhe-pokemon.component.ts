@@ -5,6 +5,7 @@ import { PokemonApiResponse } from 'src/app/shared/model/response/pokemonApi';
 import { PokemonService } from 'src/app/shared/services/pokemon.service';
 import { environment } from 'src/environments/environment';
 import { DataUtil } from 'src/app/shared/utils/dataUtil';
+import { Constants } from 'src/app/shared/utils/constants';
 
 @Component({
   selector: 'app-detalhe-pokemon',
@@ -30,12 +31,7 @@ export class DetalhePokemonComponent implements OnInit {
     this.pokemonService.getPokemon(nome).subscribe(
       (data: PokemonApiResponse) => {
         if(data) {
-          this.pokemon.id = data.id;
-          this.pokemon.height = data.height;
-          this.pokemon.name = data.name;
-          this.pokemon.setStats(data.stats);
-          this.pokemon.setTypes(data.types);
-          console.log(this.pokemon)
+          this.montarPokemon(data);
         }
       },
       (erro) => {
@@ -44,7 +40,19 @@ export class DetalhePokemonComponent implements OnInit {
     )
   }
 
+  montarPokemon(data: PokemonApiResponse) {
+    this.pokemon.id = data.id;
+    this.pokemon.height = data.height;
+    this.pokemon.name = data.name;
+    this.pokemon.setStats(data.stats);
+    this.pokemon.setTypes(data.types);
+  }
+
   get urlFoto() {
     return `${environment.apiPokePicture}/${DataUtil.adicionaZerosAEsquerda(this.pokemon.id)}.png`;
+  }
+
+  get tipo() {
+    return Constants.BOTAO_INCLUIR_POKEMON;
   }
 }
