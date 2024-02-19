@@ -29,7 +29,14 @@ export class DetalhePokemonComponent implements OnInit {
   getDetalhePokemon(nome: string = '') {
     this.pokemonService.getPokemon(nome).subscribe(
       (data: PokemonApiResponse) => {
-        this.pokemon = data;
+        if(data) {
+          this.pokemon.id = data.id;
+          this.pokemon.height = data.height;
+          this.pokemon.name = data.name;
+          this.pokemon.setStats(data.stats);
+          this.pokemon.setTypes(data.types);
+          console.log(this.pokemon)
+        }
       },
       (erro) => {
         this.toastr.error('Erro ao buscar os dados do pokémon na PokéApi!');

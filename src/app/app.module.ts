@@ -29,6 +29,7 @@ import { ListaPokemonComponent } from './pages/pokemon/lista-pokemon/lista-pokem
 import { CardListApiComponent } from './shared/components/card-list-api/card-list-api.component';
 import { DetalhePokemonComponent } from './pages/pokemon/detalhe-pokemon/detalhe-pokemon.component';
 import { PrimeiraLetraMaiusculaPipe } from './shared/pipes/primeira-letra-maiuscula.pipe';
+import { TabelaDadosPokemonComponent } from './shared/components/tabela-dados-pokemon/tabela-dados-pokemon.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { PrimeiraLetraMaiusculaPipe } from './shared/pipes/primeira-letra-maiusc
     CardListApiComponent,
     DetalhePokemonComponent,
     PrimeiraLetraMaiusculaPipe,
+    TabelaDadosPokemonComponent,
   ],
   imports: [
     CommonModule,

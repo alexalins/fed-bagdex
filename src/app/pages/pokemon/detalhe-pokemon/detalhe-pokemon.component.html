@@ -2,8 +2,9 @@
   <div class="card-body align-items-center">
     <h3 class="card-title text-center">#{{pokemon.id}} - {{pokemon.name | primeiraLetraMaiuscula}}</h3>
     <div class="centralizar-imagem">
-      <img [src]="urlFoto" />
+      <img [src]="urlFoto" alt = "Foto do pokémon {{pokemon.name | primeiraLetraMaiuscula}}"/>
     </div>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <p class="text-center">Tipos: <span *ngFor="let type of pokemon.types">{{type | primeiraLetraMaiuscula}}</span></p>
+    <app-tabela-dados-pokemon [pokemon]="pokemon"></app-tabela-dados-pokemon>
   </div>
 </div>

@@ -1,0 +1,12 @@
+<table class="table">
+  <tbody>
+    <tr class="table-primary">
+      <th>Altura</th>
+      <td>{{pokemon.height}}</td>
+    </tr>
+    <tr *ngFor="let stats of pokemon.stats; let i = index">
+      <th [ngClass]="corStats(i)">{{stats.nome | primeiraLetraMaiuscula}}</th>
+      <td [ngClass]="corStats(i)">{{stats.base}}</td>
+    </tr>
+  </tbody>
+</table>
