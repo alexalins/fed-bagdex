@@ -33,4 +33,25 @@ export class DataUtil {
   static adicionaZerosAEsquerda(numero: number): string {
     return numero.toString().padStart(3, '0');
   }
+
+  static corStats(index: number) {
+    switch (index) {
+      case 0:
+        return 'table-secondary';
+      case 1:
+        return 'table-success';
+      case 2:
+        return 'table-danger';
+      case 3:
+        return 'table-warning';
+      case 4:
+        return 'table-info';
+      case 5:
+        return 'table-light';
+      case 6:
+        return 'table-dark';
+      default:
+        return 'table-primary';
+    }
+  }
 }
