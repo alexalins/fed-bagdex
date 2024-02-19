@@ -28,6 +28,7 @@ import { ModalPadraoComponent } from './shared/components/modal-padrao/modal-pad
 import { ListaPokemonComponent } from './pages/pokemon/lista-pokemon/lista-pokemon.component';
 import { CardListApiComponent } from './shared/components/card-list-api/card-list-api.component';
 import { DetalhePokemonComponent } from './pages/pokemon/detalhe-pokemon/detalhe-pokemon.component';
+import { PrimeiraLetraMaiusculaPipe } from './shared/pipes/primeira-letra-maiuscula.pipe';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { DetalhePokemonComponent } from './pages/pokemon/detalhe-pokemon/detalhe
     ListaPokemonComponent,
     CardListApiComponent,
     DetalhePokemonComponent,
+    PrimeiraLetraMaiusculaPipe,
   ],
   imports: [
     CommonModule,
