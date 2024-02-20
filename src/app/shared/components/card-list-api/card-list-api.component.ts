@@ -10,6 +10,7 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./card-list-api.component.css'],
 })
 export class CardListApiComponent implements AfterViewChecked {
+  @Input() idBolsa: string = '';
   @Input() listaPokemon: PokemonApiResponse[] = [];
   @Input() urlProximo: string = '';
   @Input() urlAnterior: string = '';
@@ -20,7 +21,8 @@ export class CardListApiComponent implements AfterViewChecked {
   filtro: string = '';
   urlAtual: string = '';
 
-  constructor(private pipeFiltro: FiltroPorNomePipe) {}
+  constructor(private pipeFiltro: FiltroPorNomePipe) {
+  }
 
   ngAfterViewChecked() {
     if (this.listaPokemon.length) {

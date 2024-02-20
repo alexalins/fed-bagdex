@@ -1,4 +1,6 @@
 <div class="botao-flutuante" [ngSwitch]="tipo">
   <a *ngSwitchCase="'incluir-bag'" routerLink="/bolsa/salvar"><i class="bi bi-plus-lg icone"></i></a>
-  <a *ngSwitchCase="'incluir-pokemon'" routerLink="/lista/pokemon"><i class="bi bi-plus-lg icone"></i></a>
+  <a *ngSwitchCase="'incluir-pokemon'" routerLink="/{{id}}/lista/pokemon"><i class="bi bi-plus-lg icone"></i></a>
+  <a *ngSwitchCase="'salva-pokemon-bag'" (click)="clickSalvarPokemon()"><i class="bi bi-floppy icone"></i></a>
+  <a *ngSwitchCase="'deletar-pokemon-bag'" (click)="clickDeletarPokemon()"><i class="bi bi-trash3 icone"></i></a>
 </div>

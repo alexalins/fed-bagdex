@@ -23,4 +23,7 @@ export class Constants {
   //Tipo Botao
   static readonly BOTAO_INCLUIR_BAG: string = 'incluir-bag';
   static readonly BOTAO_INCLUIR_POKEMON: string = 'incluir-pokemon';
+  static readonly BOTAO_SALVAR_POKEMON_EM_BAG: string = 'salva-pokemon-bag';
+  static readonly BOTAO_DELETAR_POKEMON_EM_BAG: string = 'deletar-pokemon-bag';
+
 }

@@ -1,4 +1,4 @@
-<div class="card align-items-center card-body mx-auto ">
+<div class="card align-items-center card-body mx-auto">
   <div class="card-body align-items-center">
     <h3 class="card-title text-center">#{{pokemon.id}} - {{pokemon.name | primeiraLetraMaiuscula}}</h3>
     <div class="centralizar-imagem">
@@ -8,3 +8,5 @@
     <app-tabela-dados-pokemon [pokemon]="pokemon"></app-tabela-dados-pokemon>
   </div>
 </div>
+
+<botao-flutuante [tipo]="tipo" (onClickSalvarPokemon)="salvarPokemon()"></botao-flutuante>

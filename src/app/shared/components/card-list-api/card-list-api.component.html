@@ -19,7 +19,7 @@
   <div *ngIf="listaPokemonAux.length; else listaPokemonVazia">
     <div class="wrapper">
       <div *ngFor="let pokemon of listaPokemonAux">
-        <app-card-pokemon [pokemonApi]="pokemon" [routerLink]="['/detalhe/pokemon', pokemon.name]"></app-card-pokemon>
+        <app-card-pokemon [pokemonApi]="pokemon" [routerLink]="['/', idBolsa, 'detalhe', 'pokemon', pokemon.name]" [queryParams]="{ isEdit: true }"></app-card-pokemon>
       </div>
     </div>
     <div class="footer">

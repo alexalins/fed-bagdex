@@ -6,6 +6,7 @@ import { Observable, catchError, throwError } from 'rxjs';
 import { Bolsa } from '../model/bolsa';
 import { TokenUtil } from '../utils/tokenUtil';
 import { BolsaRequest } from '../model/request/bolsa';
+import { Pokemon } from '../model/pokemon';
 
 @Injectable({
   providedIn: 'root',
@@ -76,5 +77,16 @@ export class BolsaService {
     } else {
       return this.salvar(bolsa)
     }
+  }
+
+  salvarPokemon(idBolsa: number, pokemon: Pokemon): Observable<any> {
+    const headers = TokenUtil.getHeaders();
+    return this.http
+      .put<any>(`${this.apiUrl}/save/pokemon/${idBolsa}`, pokemon, { headers })
+      .pipe(
+        catchError((e) => {
+          return throwError(e);
+        })
+      );
   }
 }

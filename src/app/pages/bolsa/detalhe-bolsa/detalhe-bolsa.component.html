@@ -16,9 +16,9 @@
   </button>
 </div>
 
-<app-card-list-pokemon [listaPokemon]="bolsa.pokemon"></app-card-list-pokemon>
+<app-card-list-pokemon [listaPokemon]="bolsa.pokemon" [idBolsa]="bolsa.id"></app-card-list-pokemon>
 
-<botao-flutuante [tipo]="tipo"></botao-flutuante>
+<botao-flutuante [tipo]="tipo" [id]="bolsa.id"></botao-flutuante>
 
 <app-modal-padrao *ngIf="isExcluir"
   title="Deseja excluir essa bag?"

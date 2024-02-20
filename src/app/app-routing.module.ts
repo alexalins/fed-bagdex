@@ -16,8 +16,8 @@ const routes: Routes = [
   { path: 'bolsa/salvar', component: SalvarBolsaComponent},
   { path: 'bolsa/detalhe/:id', component: DetalheBolsaComponent},
   { path: 'bolsa/editar/:id', component: SalvarBolsaComponent},
-  { path: 'lista/pokemon', component: ListaPokemonComponent},
-  { path: 'detalhe/pokemon/:nome', component: DetalhePokemonComponent}
+  { path: ':id/lista/pokemon', component: ListaPokemonComponent},
+  { path: ':id/detalhe/pokemon/:nome', component: DetalhePokemonComponent}
 ];
 
 @NgModule({

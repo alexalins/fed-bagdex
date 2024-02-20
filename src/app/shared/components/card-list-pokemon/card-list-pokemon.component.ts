@@ -10,6 +10,7 @@ import { FiltroPorNomePipe } from '../../pipes/filtro-por-nome.pipe';
 export class CardListPokemonComponent implements AfterViewChecked {
 
   @Input() listaPokemon: Pokemon[] = [];
+  @Input() idBolsa: number = 0;
 
   listaPokemonAux: Pokemon[] = [];
   filtro: string = '';

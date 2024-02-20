@@ -17,6 +17,7 @@
   >
     <div *ngFor="let pokemon of displayedData">
       <app-card-pokemon
+        [routerLink]="['/', idBolsa, 'detalhe', 'pokemon', pokemon.nome]"
         [pokemon]="pokemon"
         class="d-inline-flex"
       ></app-card-pokemon>
