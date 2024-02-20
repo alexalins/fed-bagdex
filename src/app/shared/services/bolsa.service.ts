@@ -79,10 +79,21 @@ export class BolsaService {
     }
   }
 
-  salvarPokemon(idBolsa: number, pokemon: Pokemon): Observable<any> {
+  salvarPokemonBolsa(idBolsa: number, pokemon: Pokemon): Observable<any> {
     const headers = TokenUtil.getHeaders();
     return this.http
       .put<any>(`${this.apiUrl}/save/pokemon/${idBolsa}`, pokemon, { headers })
+      .pipe(
+        catchError((e) => {
+          return throwError(e);
+        })
+      );
+  }
+
+  deletarPokemonBolsa(idBolsa: number, pokemon: Pokemon): Observable<any> {
+    const headers = TokenUtil.getHeaders();
+    return this.http
+      .put<any>(`${this.apiUrl}/delete/pokemon/${idBolsa}`, pokemon, { headers })
       .pipe(
         catchError((e) => {
           return throwError(e);

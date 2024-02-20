@@ -1,6 +1,6 @@
 import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { PokemonApiResponse } from 'src/app/shared/model/response/pokemonApi';
 import { PokemonService } from 'src/app/shared/services/pokemon.service';
 import { environment } from 'src/environments/environment';
@@ -19,12 +19,14 @@ export class DetalhePokemonComponent implements OnInit {
   pokemon: PokemonApiResponse = new PokemonApiResponse();
   id: number = 0;
   isEdit: boolean = false;
+  isExcluir: boolean = false;
 
   constructor(
     private activatedRoute: ActivatedRoute,
     private pokemonService: PokemonService,
     private toastr: ToastrService,
-    private bolsaService: BolsaService
+    private bolsaService: BolsaService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -69,12 +71,32 @@ export class DetalhePokemonComponent implements OnInit {
   salvarPokemon() {
     let myPokemon = this.montarPokemonDto();
 
-    this.bolsaService.salvarPokemon(this.id, myPokemon).subscribe(
+    this.bolsaService.salvarPokemonBolsa(this.id, myPokemon).subscribe(
       (data) => {
         this.toastr.success('Pokémon salvo com sucesso!');
+        this.router.navigateByUrl(`bolsa/detalhe/${this.id}`);
       },
       (erro) => {
         this.toastr.error('Erro ao buscar os dados do pokémon na PokéApi!');
+      }
+    )
+  }
+
+  modalExcluir(){
+    this.isExcluir = !this.isExcluir;
+  }
+
+
+  deletarPokemon() {
+    let myPokemon = this.montarPokemonDto();
+
+    this.bolsaService.deletarPokemonBolsa(this.id, myPokemon).subscribe(
+      (data) => {
+        this.toastr.success('Pokémon excluido com sucesso!');
+        this.router.navigateByUrl(`bolsa/detalhe/${this.id}`)
+      },
+      (erro) => {
+        this.toastr.error('Não foi possível excluir o pokémon!');
       }
     )
   }
