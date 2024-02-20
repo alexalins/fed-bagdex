@@ -75,7 +75,7 @@ import { TabelaDadosPokemonComponent } from './shared/components/tabela-dados-po
       enableHtml: true
     }),
   ],
-  providers: [FiltroPorNomePipe],
+  providers: [FiltroPorNomePipe, PrimeiraLetraMaiusculaPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

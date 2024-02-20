@@ -5,6 +5,7 @@ import { BolsaRequest } from '../model/request/bolsa';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TreinadorRequest } from '../model/request/treinador';
 import { Bolsa } from '../model/bolsa';
+import { Pokemon } from '../model/pokemon';
 
 describe('BolsaService', () => {
   let service: BolsaService;
@@ -222,5 +223,48 @@ describe('BolsaService', () => {
 
     const req = httpMock.expectOne(`${service.apiUrl}/${100}`);
     req.flush({}, errorResponse);
+  });
+
+
+  it('Dado que chame salvarPokemonBolsa com pokemon nulo' , () => {
+    const pokemon: Pokemon = new Pokemon();
+    service.salvarPokemonBolsa(1, pokemon).subscribe((response) => {});
+
+    const req = httpMock.expectOne(`${service.apiUrl}/save/pokemon/${1}`);
+    expect(req.request.method).toBe('PUT');
+  });
+
+
+  it('Dado que chame salvarPokemonBolsa com sucesso' , () => {
+    const pokemon: Pokemon = {
+      id: 3,
+      nome: 'Charmander',
+      foto: 'foto/charmander'
+    };
+    service.salvarPokemonBolsa(1, pokemon).subscribe((response) => {});
+
+    const req = httpMock.expectOne(`${service.apiUrl}/save/pokemon/${1}`);
+    expect(req.request.method).toBe('PUT');
+  });
+
+  it('Dado que chame deletarPokemonBolsa com pokemon nulo' , () => {
+    const pokemon: Pokemon = new Pokemon();
+    service.deletarPokemonBolsa(1, pokemon).subscribe((response) => {});
+
+    const req = httpMock.expectOne(`${service.apiUrl}/delete/pokemon/${1}`);
+    expect(req.request.method).toBe('PUT');
+  });
+
+
+  it('Dado que chame salvarPokemonBolsa com sucesso' , () => {
+    const pokemon: Pokemon = {
+      id: 3,
+      nome: 'Charmander',
+      foto: 'foto/charmander'
+    };
+    service.deletarPokemonBolsa(1, pokemon).subscribe((response) => {});
+
+    const req = httpMock.expectOne(`${service.apiUrl}/delete/pokemon/${1}`);
+    expect(req.request.method).toBe('PUT');
   });
 });

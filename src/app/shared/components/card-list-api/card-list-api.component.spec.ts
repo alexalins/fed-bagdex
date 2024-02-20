@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CardListApiComponent } from './card-list-api.component';
+import { FiltroPorNomePipe } from '../../pipes/filtro-por-nome.pipe';
 
 describe('CardListApiComponent', () => {
   let component: CardListApiComponent;
@@ -8,7 +9,8 @@ describe('CardListApiComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardListApiComponent ]
+      declarations: [ CardListApiComponent ],
+      providers: [FiltroPorNomePipe]
     })
     .compileComponents();
   });
