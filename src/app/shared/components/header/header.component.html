@@ -1,10 +1,10 @@
 <nav class="navbar header fixed-top">
     <div class="row container-fluid">
       <div class="col">
-        <img [src]="caminhoImagem" [alt]="titulo" class="d-inline-block icone">
+        <img [src]="caminhoImagem" [alt]="titulo" class="d-inline-block icone" routerLink="/inicio">
       </div>
       <div class="col text-center">
-        <span class="navbar-text titulo">
+        <span class="navbar-text titulo" routerLink="/inicio">
           {{titulo}}
         </span>
       </div>

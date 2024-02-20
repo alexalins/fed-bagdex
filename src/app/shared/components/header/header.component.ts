@@ -7,15 +7,12 @@ import { Constants } from '../../utils/constants';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent {
 
   caminhoImagem: string = '../../../../assets/image/pokebola.png';
   titulo: string = 'Bagdex';
 
   constructor(private router: Router) { }
-
-  ngOnInit(): void {
-  }
 
   get isTelaSemBotaoSair() {
     const currentRoute = this.router.url;
